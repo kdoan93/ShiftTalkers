@@ -9,3 +9,16 @@ from flask_login import current_user, login_required
 
 
 post_routes = Blueprint('post', __name__)
+
+
+@post_routes.route('/current')
+@login_required
+def get_all_reviews():
+    """
+    GET all current user's reviews
+    """
+
+    all_reviews = Post.query.all()
+    all_review_list = [review.to_dict() for review in all_reviews if review.user_id == current_user.id]
+
+    return all_review_list
