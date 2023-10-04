@@ -79,7 +79,6 @@ def seed_posts():
         body="KB43VER",
     )
 
-
     posts = [
         post1,
         post2,
