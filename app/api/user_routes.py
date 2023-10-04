@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import User
+from app.models import User, Post, Comment
 
 user_routes = Blueprint('users', __name__)
 
@@ -36,3 +36,20 @@ def get_current_user():
             return { "user": user.to_dict() }
     except:
         return { "user": "No user logged in!" }
+
+
+@user_routes.route('/<int:userId>/posts')
+def user_posts(userId):
+    """
+    Query to get all posts by user.id
+    """
+
+    all_posts = Post.query.all()
+
+    user_posts = [ post.to_dict() for post in all_posts if post.user_id == userId ]
+
+    if not user_posts:
+        return { "message": "User has no posts yet!" }, 404
+
+    return user_posts
+

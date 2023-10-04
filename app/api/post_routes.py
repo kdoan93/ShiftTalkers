@@ -23,18 +23,35 @@ def get_all_posts():
     return { "posts": all_post_list }
 
 
-@post_routes.route('/<int:id>')
-def get_post_by_id(id):
+@post_routes.route('/<int:postId>')
+def get_post_by_id(postId):
     """
     Query for post by post.id
     """
 
-    one_post = Post.query.get(id)
+    one_post = Post.query.get(postId)
 
     if not one_post:
         return { "message": "Post not found!" }, 404
 
     return one_post.to_dict()
+
+
+@post_routes.route('/<int:postId>/comments')
+def get_all_post_comments(postId):
+    """"
+    Get all comments from a post.id
+    """
+
+    all_comments = Comment.query.all()
+
+    post_comments = [ comment.to_dict() for comment in all_comments if comment.post_id == postId ]
+
+    if not post_comments:
+        return { "message": "Post has no comments!" }, 404
+
+    return post_comments
+
 
 
 @post_routes.route('/current')
@@ -45,6 +62,10 @@ def get_owned_posts():
     """
 
     all_posts = Post.query.all()
+
+    if not all_posts:
+        return { "message": "User has not created any posts yet!" }
+
     owned_posts = [ post.to_dict() for post in all_posts if post.user_id == current_user.id ]
 
     return { "posts": owned_posts }
@@ -73,6 +94,33 @@ def create_post():
         db.session.add(new_post)
         db.session.commit()
         return new_post.to_dict(), 201
+
+    else:
+        print(form.errors)
+        return { "errors": form.errors }, 400
+
+
+@post_routes.route('/<int:postId>/comments', methods=["POST"])
+@login_required
+def create_comment(postId):
+    """
+    Route to create a comment by post.id
+    """
+    form = CommentForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        new_comment = Comment(
+            post_id = postId,
+            user_id = current_user.id,
+            comment = form.data["comment"],
+            created_at = date.today(),
+            updated_at = date.today()
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+        return new_comment.to_dict(), 201
 
     else:
         print(form.errors)
@@ -117,9 +165,6 @@ def delete_post(postId):
     """
 
     post_to_delete = Post.query.get(postId)
-
-    # if not post_to_delete:
-    #     return { "message": "Post not found!" }, 404
 
     if post_to_delete:
         if post_to_delete.user_id == current_user.id:
