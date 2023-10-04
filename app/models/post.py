@@ -1,8 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from flask_login import UserMixin
 from datetime import datetime
 
-class Post(db.Model, UserMixin):
+class Post(db.Model):
     __tablename__ = 'posts'
 
     if environment == "production":

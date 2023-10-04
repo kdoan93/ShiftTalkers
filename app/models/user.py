@@ -17,7 +17,6 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(255), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # Relationships
     posts = db.relationship("Post", back_populates = "user", cascade="all, delete-orphan")
@@ -43,7 +42,6 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'created_at': self.created_at,
-            'updated_at': self.updated_at,
             'likes': self.likes,
             'comments': self.comments
         }

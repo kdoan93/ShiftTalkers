@@ -7,6 +7,7 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.post_routes import post_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -16,6 +17,10 @@ app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
+
+@login.unauthorized_handler
+def unauthorized():
+    return { "message": "Authentication required!" }, 401
 
 @login.user_loader
 def load_user(id):
@@ -28,6 +33,7 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(post_routes, url_prefix='/api/post')
 db.init_app(app)
 Migrate(app, db)
 
