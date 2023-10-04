@@ -22,6 +22,6 @@ class Like(db.Model):
             'post_id': self.post_id,
             'user_id': self.user_id,
             'created_at': self.created_at,
-            'user': self.user,
-            'posts': self.post
+            # 'user': self.user,
+            # 'posts': self.post
         }

@@ -25,9 +25,9 @@ class Post(db.Model):
             'user_id': self.user_id,
             'media': self.media,
             'body': self.body,
-            'user': self.user,
-            'comment': self.comment,
-            'like': self.likes,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            # 'comment': self.comment,
+            # 'user': self.user,
+            # 'like': self.likes,
         }
