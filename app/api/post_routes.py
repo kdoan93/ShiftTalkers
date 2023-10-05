@@ -20,7 +20,7 @@ def get_all_posts():
 
     all_post_list = [post.to_dict() for post in posts]
 
-    return { "posts": all_post_list }
+    return all_post_list
 
 
 @post_routes.route('/<int:postId>')
