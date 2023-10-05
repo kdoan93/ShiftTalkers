@@ -1,0 +1,13 @@
+.sideBar {
+    border-right: 2px solid black;
+    /* display: grid; */
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    padding: 20px 20px;
+}
+
+/* .user-sidebar div {
+    border: 1px solid red;
+    margin: 10px;
+} */

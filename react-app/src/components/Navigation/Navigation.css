@@ -7,6 +7,7 @@
 }
 
 .nav-bar {
-  /* border: 1px solid red; */
+  border-bottom: 2px solid black;
   display: flex;
+  padding-left: 10px;
 }

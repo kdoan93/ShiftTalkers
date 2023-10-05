@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import SideBar from "./components/Navigation/SideBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <SideBar isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route path="/login" >
@@ -30,7 +32,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/">
-            
+
           </Route>
           <Route>
             <img style={{ width: '100%', height: '100%', marginTop: 1 }}
