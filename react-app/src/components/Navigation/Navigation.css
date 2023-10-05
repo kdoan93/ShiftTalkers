@@ -10,4 +10,5 @@
   border-bottom: 2px solid black;
   display: flex;
   padding-left: 10px;
+  justify-content: space-between;
 }

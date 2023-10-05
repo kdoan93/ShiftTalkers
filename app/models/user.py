@@ -43,6 +43,7 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'created_at': self.created_at,
+            'profile_pic': self.profile_pic,
             # 'likes': self.likes,
             # 'comments': self.comments
         }

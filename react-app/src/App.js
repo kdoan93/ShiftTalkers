@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SideBar from "./components/Navigation/SideBar";
+import { PostsLandingPage } from "./components/Post/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/">
-
+            <PostsLandingPage />
           </Route>
           <Route>
             <img style={{ width: '100%', height: '100%', marginTop: 1 }}

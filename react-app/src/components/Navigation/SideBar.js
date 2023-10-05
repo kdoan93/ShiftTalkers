@@ -14,13 +14,28 @@ function SideBar({ isLoaded }){
 				<NavLink exact to="/">Home</NavLink>
                 {/* Add garage logo as "Home" icon */}
 			</div>
-			{isLoaded && (
+			{sessionUser ? (
 				<div className='user-sidebar'>
 					<div>
 						***Create Post***
 					</div>
+					<div>
+						***User details***
+					</div>
+					<div>
+						***Log Out***
+					</div>
 				</div>
-			)}
+			) : (
+                <div>
+                    <div>
+                        Log In
+                    </div>
+                    <div>
+                        Sign Up
+                    </div>
+                </div>
+            )}
 		</div>
 	);
 }
