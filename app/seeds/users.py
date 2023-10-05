@@ -9,28 +9,32 @@ def seed_users():
         email='demo@aa.io',
         first_name='Demo',
         last_name='Lition',
-        password='password'
+        password='password',
+        profile_pic='https://images.drive.com.au/driveau/image/private/c_fill,f_auto,g_auto,h_1080,q_auto:eco,w_1920/v1/ca-s3/2011/08/jeremy-clarkson-top-gear-e1313384063757-625x393.jpg'
     )
     marnie = User(
         username='marnie',
         email='marnie@aa.io',
         first_name='Marnie',
         last_name='May',
-        password='password'
+        password='password',
+        profile_pic='https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F1988b0ce-567d-11eb-b0d0-071d11d2d557.jpg?crop=6036%2C4024%2C0%2C0'
     )
     bobbie = User(
         username='bobbie',
         email='bobbie@aa.io',
         first_name='Bobbie',
         last_name='Wobbie',
-        password='password'
+        password='password',
+        profile_pic='https://media.speedcafe.com/wp-content/uploads/2020/09/MCMxMichelin.jpg'
     )
     kenny = User(
         username='kdoan93',
         email='kdoan93@gmail.com',
         first_name='Kenny',
         last_name='Doan',
-        password='password'
+        password='password',
+        profile_pic='https://static1.srcdn.com/wordpress/wp-content/uploads/2020/05/Elmo-Flames-Meme.jpg'
     )
 
     db.session.add(demo)
