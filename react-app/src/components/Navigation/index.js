@@ -7,17 +7,23 @@ import './Navigation.css';
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
+
 	return (
-		<ul>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
+		<div className='nav-bar'>
+			<div>
+				<NavLink exact to="/"><img style={{ width: '300px'}} src="https://tinypic.host/images/2023/10/05/ShiftTalkers-logos_transparent-resize-edited.png" alt="ShiftTalkers-logos_transparent-resize-edited.png" border="0" /></NavLink>
+			</div>
 			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
+				<div>
+					<div>
+						<ProfileButton user={sessionUser} />
+					</div>
+					<div>
+						{/* <ProfileImage /> */}
+					</div>
+				</div>
 			)}
-		</ul>
+		</div>
 	);
 }
 
