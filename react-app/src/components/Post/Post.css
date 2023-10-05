@@ -1,0 +1,41 @@
+.post-details-container {
+    border: 2px solid black;
+    margin: 20px 10px;
+    padding: 15px;
+}
+
+.post-profile-pic {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+}
+
+.post-user-date {
+    /* border: 1px solid red; */
+}
+
+.post-user-date p {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.post-username {
+    /* border: 1px solid red; */
+    text-align: left;
+}
+
+.post-upper-details {
+    /* border: 1px solid red; */
+    display: flex;
+}
+
+.post-body {
+    /* border: 1px solid blue; */
+}
+
+.post-pics {
+    /* border: 1px solid green; */
+    text-align: center;
+}

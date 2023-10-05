@@ -20,7 +20,9 @@ console.log("posts: ", posts)
   return (
     <>
       <div className="post-landing-page-container">
-        <PostDetail post={posts} />
+        {posts.map((post) => (
+          <PostDetail post={post} />
+        ))}
       </div>
     </>
   );
