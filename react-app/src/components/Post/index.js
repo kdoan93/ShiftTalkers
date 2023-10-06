@@ -12,9 +12,9 @@ export const PostDetail = ({ post }) => {
     const dispatch = useDispatch()
     const { userId } = useParams()
 
-    let comments = useSelector((state) => state.comments.allComments)
-    comments = Object.values(comments)
-    console.log("PostDetail comments: ", comments[0].comment)
+    // let comments = useSelector((state) => state.comments.allComments)
+    // comments = Object.values(comments)
+    // console.log("PostDetail comments: ", comments[0].comment)
     // console.log("PostDetail post: ", post)
 
     function lowBudgetDateConverter(date) {
@@ -30,8 +30,10 @@ export const PostDetail = ({ post }) => {
     }
 
     useEffect(() => {
-        dispatch(thunkGetPostComments(post.id))
+        // dispatch(thunkGetPostComments(post.id))
     }, [dispatch, userId])
+
+    // if (!comments) return null
 
     return (
         <div className="post-details-container">
@@ -54,12 +56,15 @@ export const PostDetail = ({ post }) => {
             <div className="post-pics">
                 <img width="500px" src={post.media} />
             </div>
-            <div>
+            {/* <div>
                 Post comments:
                 {comments.map(comment => (
                     <div>{comment.comment}</div>
                 ))}
-            </div>
+            </div> */}
+
+            {/*******Prop thread post.id and throw in comment component******/}
+
         </div>
     )
 }

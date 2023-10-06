@@ -11,7 +11,8 @@ export const LandingPage = () => {
 const getPosts = useSelector((state) => state.posts.allPosts)
 const posts = Object.values(getPosts)
 //   const restaurants = Object.values(getRestaurants);
-console.log("posts: ", posts)
+// console.log("LandingPage posts: ", posts)
+
   useEffect(() => {
     // dispatch(thunkGetRestaurants());
     dispatch(thunkGetPosts())
@@ -19,11 +20,11 @@ console.log("posts: ", posts)
 
   return (
     <>
-      <div className="post-landing-page-container">
         {posts.map((post) => (
-          <PostDetail post={post} />
+          <div key={post.id} className="post-landing-page-container">
+            <PostDetail post={post} />
+          </div>
         ))}
-      </div>
     </>
   );
 };
