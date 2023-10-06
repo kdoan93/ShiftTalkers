@@ -4,7 +4,7 @@
     width: 20%;
     height: 700px;
     position: sticky;
-    top: 8%;
+    top: 9%;
     padding: 20px 20px;
 }
 
@@ -16,7 +16,7 @@
     margin: 0px;
 }
 
-.sidebar-logout:hover {
+.sidebar-links:hover {
     cursor: pointer;
     max-width: auto;
 }

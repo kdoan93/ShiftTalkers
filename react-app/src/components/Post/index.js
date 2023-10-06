@@ -1,10 +1,15 @@
 // Index.js for post detail
-import { useHistory } from "react-router-dom/";
+import { useHistory, useParams } from "react-router-dom/";
 import "./Post.css"
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 export const PostDetail = ({ post }) => {
 
     const history = useHistory()
+    const dispatch = useDispatch()
+    const { userId } = useParams()
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -18,10 +23,16 @@ export const PostDetail = ({ post }) => {
         history.push(`/posts/${post.id}`)
     }
 
+    useEffect(() => {
+
+    }, [dispatch, userId])
+
     return (
         <div className="post-details-container">
             <div className="post-upper-details">
-                <img className="post-profile-pic" width="100px" src={post.profile_pic} />
+                <NavLink exact to={`/users/${post.user_id}`}>
+                    <img className="post-profile-pic" width="100px" src={post.profile_pic} />
+                </NavLink>
                 <div className="post-user-date">
                     <p className="post-username">
                         {post.username}
