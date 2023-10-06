@@ -2,14 +2,20 @@
 import { useHistory, useParams } from "react-router-dom/";
 import "./Post.css"
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { thunkGetPostComments } from "../../store/comment";
 
 export const PostDetail = ({ post }) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
     const { userId } = useParams()
+
+    let comments = useSelector((state) => state.comments.allComments)
+    comments = Object.values(comments)
+    console.log("PostDetail comments: ", comments[0].comment)
+    // console.log("PostDetail post: ", post)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -24,7 +30,7 @@ export const PostDetail = ({ post }) => {
     }
 
     useEffect(() => {
-
+        dispatch(thunkGetPostComments(post.id))
     }, [dispatch, userId])
 
     return (
@@ -47,6 +53,12 @@ export const PostDetail = ({ post }) => {
             </div>
             <div className="post-pics">
                 <img width="500px" src={post.media} />
+            </div>
+            <div>
+                Post comments:
+                {comments.map(comment => (
+                    <div>{comment.comment}</div>
+                ))}
             </div>
         </div>
     )

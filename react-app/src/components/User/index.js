@@ -14,10 +14,10 @@ export const UserDetail = () => {
 
     let userPosts = useSelector((state) => state.posts.allPosts)
     userPosts = Object.values(userPosts)
-    console.log("UserDetails userPosts: ", userPosts)
+    // console.log("UserDetails userPosts: ", userPosts)
 
     const user = useSelector((state) => state.session.user)
-    console.log("UserDetail user: ", user)
+    // console.log("UserDetail user: ", user)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))

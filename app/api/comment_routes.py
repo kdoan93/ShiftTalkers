@@ -21,7 +21,7 @@ def get_all_comments():
 
     all_comment_list = [comment.to_dict() for comment in comments]
 
-    return { "comments": all_comment_list }
+    return all_comment_list
 
 
 @comment_routes.route("/all")
