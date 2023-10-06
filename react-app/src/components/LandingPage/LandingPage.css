@@ -1,5 +1,9 @@
 .post-landing-page-container {
     /* border: 1px solid red; */
-    margin-left: 25%;
+    margin: 0px 0px 0px 25%;
     width: 74%;
+}
+
+.landing-page-container {
+    margin-top: 100px;
 }

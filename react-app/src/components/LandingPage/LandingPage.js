@@ -9,7 +9,7 @@ export const LandingPage = () => {
 
 //   const getRestaurants = useSelector((state) => state.restaurant.allRestaurants);
 const getPosts = useSelector((state) => state.posts.allPosts)
-const posts = Object.values(getPosts)
+const posts = Object.values(getPosts).reverse()
 //   const restaurants = Object.values(getRestaurants);
 // console.log("LandingPage posts: ", posts)
 
@@ -19,12 +19,12 @@ const posts = Object.values(getPosts)
   }, [dispatch]);
 
   return (
-    <>
+    <div className="landing-page-container">
         {posts.map((post) => (
           <div key={post.id} className="post-landing-page-container">
             <PostDetail post={post} />
           </div>
         ))}
-    </>
+    </div>
   );
 };

@@ -13,7 +13,7 @@ export const UserDetail = () => {
     const dispatch = useDispatch()
 
     let userPosts = useSelector((state) => state.posts.allPosts)
-    userPosts = Object.values(userPosts)
+    userPosts = Object.values(userPosts).reverse()
     // console.log("UserDetails userPosts: ", userPosts)
 
     const user = useSelector((state) => state.session.user)

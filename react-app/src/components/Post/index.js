@@ -4,13 +4,18 @@ import "./Post.css"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import OpenModalButton from "../OpenModalButton";
 import { thunkGetPostComments } from "../../store/comment";
+import { UpdatePostModal } from "./UpdatePostModal";
+import { DeletePostModal } from "./DeletePostModal";
 
 export const PostDetail = ({ post }) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
     const { userId } = useParams()
+
+    const user = useSelector((state) => state.session.user)
 
     // let comments = useSelector((state) => state.comments.allComments)
     // comments = Object.values(comments)
@@ -56,15 +61,36 @@ export const PostDetail = ({ post }) => {
             <div className="post-pics">
                 <img width="500px" src={post.media} />
             </div>
+
+            {user.id === post.user_id ?
+            <div>
+                <OpenModalButton
+                    className="update-post-button"
+                    buttonText="Update"
+                    modalComponent={<UpdatePostModal post={post} />}
+                />
+                <OpenModalButton
+                    className="update-post-button"
+                    buttonText="Delete"
+                    modalComponent={<DeletePostModal post={post} />}
+                />
+            </div>
+            :
+            <div>Not your post!</div>
+            // Dirty delete ^^^ when done
+            }
+
+
+
+
+
             {/* <div>
                 Post comments:
                 {comments.map(comment => (
                     <div>{comment.comment}</div>
                 ))}
             </div> */}
-
             {/*******Prop thread post.id and throw in comment component******/}
-
         </div>
     )
 }
