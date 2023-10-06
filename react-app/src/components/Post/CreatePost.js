@@ -20,12 +20,12 @@ export const CreatePostModal = () => {
     useEffect(() => {
         const errors = {}
         if (!body) errors.body = "Post body needs content!"
-        if (
-            media &&
-            !media.endsWith("jpg") &&
-            !media.endsWith("jpeg") &&
-            !media.endsWith("png")
-            ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
+        // if (
+        //     media &&
+        //     !media.endsWith("jpg") &&
+        //     !media.endsWith("jpeg") &&
+        //     !media.endsWith("png")
+        //     ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
 
         setErrors(errors)
     }, [dispatch, media, body])
@@ -67,7 +67,7 @@ export const CreatePostModal = () => {
                     onChange={(e) => setMedia(e.target.value)}
                     placeholder="Post a pic with your post!"
                 /> */}
-                {errors.media && submitted && <p>{errors.media}</p>}
+                {/* {errors.media && submitted && <p>{errors.media}</p>} */}
                 <textarea
                     type="text"
                     value={body}
