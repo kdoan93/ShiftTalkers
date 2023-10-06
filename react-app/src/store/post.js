@@ -80,9 +80,9 @@ export const thunkCreatePost = (post) => async (dispatch) => {
     })
 
     if (res.ok) {
-        const posts = await res.json()
+        const data = await res.json()
         await dispatch(createPost(post))
-        return posts
+        return data
     } else {
         const errors = await res.json()
         return errors
