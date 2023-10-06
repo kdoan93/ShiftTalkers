@@ -2,9 +2,9 @@
     border-right: 2px solid black;
     /* display: grid; */
     width: 20%;
-    height: 700px;
-    position: sticky;
-    top: 9%;
+    height: 1000px;
+    position: fixed;
+    top: 80px;
     padding: 20px 20px;
 }
 

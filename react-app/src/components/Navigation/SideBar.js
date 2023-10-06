@@ -8,6 +8,7 @@ import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { CreatePostModal } from '../Post/CreatePost';
 
 function SideBar({ isLoaded }){
     const dispatch = useDispatch()
@@ -32,7 +33,11 @@ function SideBar({ isLoaded }){
 			{sessionUser ? (
 				<div className='user-sidebar'>
 					<div>
-						***Create Post***
+                        <OpenModalButton
+                        className="create-post-modal"
+                        buttonText="Create a Post"
+                        modalComponent={<CreatePostModal />}
+                        />
 					</div>
 					<div>
 						***User details***
