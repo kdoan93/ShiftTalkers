@@ -4,6 +4,10 @@
     padding: 15px;
 }
 
+.post-details-container div {
+    margin: 10px;
+}
+
 .post-profile-pic {
     border: 1px solid black;
     border-radius: 50%;
@@ -11,11 +15,8 @@
     height: 75px;
 }
 
-.post-user-date {
-    /* border: 1px solid red; */
-}
-
 .post-user-date p {
+    /* border: 1px solid red; */
     margin: 0px;
     display: flex;
     align-items: center;
@@ -23,7 +24,12 @@
 
 .post-username {
     /* border: 1px solid red; */
-    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.post-created {
+    font-size: 12px;
 }
 
 .post-upper-details {
@@ -33,6 +39,7 @@
 
 .post-body {
     /* border: 1px solid blue; */
+    font-weight: 500;
 }
 
 .post-pics {

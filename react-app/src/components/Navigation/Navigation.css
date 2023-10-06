@@ -8,7 +8,11 @@
 
 .nav-bar {
   border-bottom: 2px solid black;
+  background-color: white;
+  position: sticky;
+  top: 0px;
   display: flex;
   padding-left: 10px;
   justify-content: space-between;
+  height: 10%;
 }

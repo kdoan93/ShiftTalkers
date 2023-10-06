@@ -15,17 +15,16 @@ function Navigation({ isLoaded }){
 			</div>
 			{sessionUser ? (
 				<div>
-					<NavLink exact to={`/users/${sessionUser.id}`} >
-						<img style={{ width: '100px'}} src={sessionUser.profile_pic} alt="profile-pic" border='0' />
-					</NavLink>
 					<div>
-						<ProfileButton user={sessionUser} />
+						<NavLink exact to={`/users/${sessionUser.id}`} >
+							<img style={ {width: '75px', height: '75px', borderRadius: '50%'} } src={sessionUser.profile_pic} className="navigation-profile-pic" border='0' />
+						</NavLink>
+						<div>
+						</div>
 					</div>
 				</div>
 			) : (
-				<div>
-					<ProfileButton user={sessionUser} />
-				</div>
+				<></>
 			)}
 		</div>
 	);

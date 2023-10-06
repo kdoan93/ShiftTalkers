@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom/";
 import "./Post.css"
 
 export const PostDetail = ({ post }) => {
-    const { id, user_id, media, body, created_at, updated_at } = post
 
     const history = useHistory()
 
@@ -12,7 +11,7 @@ export const PostDetail = ({ post }) => {
         let month = newDate.substring(4, 7)
         let day = newDate.substring(7,10)
         let year = newDate.substring(10, 16)
-        return month.concat(day, ",".concat(year))
+        return month.concat(day)
     }
 
     const handleClick = () => {
@@ -24,11 +23,11 @@ export const PostDetail = ({ post }) => {
             <div className="post-upper-details">
                 <img className="post-profile-pic" width="100px" src={post.profile_pic} />
                 <div className="post-user-date">
-                    <p>
-                        Username: {post.username}
+                    <p className="post-username">
+                        {post.username}
                     </p>
-                    <p>
-                        Created at: {lowBudgetDateConverter(post.created_at)}
+                    <p className="post-created">
+                        {lowBudgetDateConverter(post.created_at)}
                     </p>
                 </div>
             </div>

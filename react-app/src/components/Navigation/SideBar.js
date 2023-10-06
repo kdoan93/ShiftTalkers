@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './SideBar.css';
+import { logout } from '../../store/session';
+import OpenModalButton from '../OpenModalButton';
+import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
 
 function SideBar({ isLoaded }){
+    const dispatch = useDispatch()
 	const sessionUser = useSelector(state => state.session.user);
+    const [showMenu, setShowMenu] = useState(false);
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        dispatch(logout());
+      };
+
+    const closeMenu = () => setShowMenu(false);
 
 	return (
 		<div className='sideBar'>
@@ -23,17 +35,26 @@ function SideBar({ isLoaded }){
 						***User details***
 					</div>
 					<div>
-						***Log Out***
+                        <p className='sidebar-logout' onClick={handleLogout}>Log Out</p>
 					</div>
 				</div>
 			) : (
                 <div>
                     <div>
-                        Log In
+                        <OpenModalButton
+                        buttonText="Log In"
+                        onItemClick={closeMenu}
+                        modalComponent={<LoginFormModal />}
+                        />
                     </div>
                     <div>
-                        Sign Up
+                        <OpenModalButton
+                        buttonText="Sign Up"
+                        onItemClick={closeMenu}
+                        modalComponent={<SignupFormModal />}
+                        />
                     </div>
+
                 </div>
             )}
 		</div>

@@ -2,9 +2,23 @@
     border-right: 2px solid black;
     /* display: grid; */
     width: 20%;
-    height: 100%;
-    position: absolute;
+    height: 700px;
+    position: sticky;
+    top: 8%;
     padding: 20px 20px;
+}
+
+.sidebar-logout {
+    /* border: 1px solid red; */
+    font-weight: 700;
+    width: 65px;
+    text-align: center;
+    margin: 0px;
+}
+
+.sidebar-logout:hover {
+    cursor: pointer;
+    max-width: auto;
 }
 
 /* .user-sidebar div {
