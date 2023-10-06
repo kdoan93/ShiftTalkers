@@ -16,7 +16,7 @@ export const DeletePostModal = ({ post }) => {
     }
 
     useEffect(() => {
-        dispatch(postsActions.thunkDeletePost(post.id))
+        dispatch(postsActions.thunkGetPostInfo(post.id))
     }, [dispatch])
 
     return (

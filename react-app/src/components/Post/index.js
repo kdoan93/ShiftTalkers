@@ -70,7 +70,7 @@ export const PostDetail = ({ post }) => {
                     modalComponent={<UpdatePostModal post={post} />}
                 />
                 <OpenModalButton
-                    className="update-post-button"
+                    className="delete-post-button"
                     buttonText="Delete"
                     modalComponent={<DeletePostModal post={post} />}
                 />
