@@ -62,7 +62,7 @@ export const PostDetail = ({ post }) => {
                 <img width="500px" src={post.media} />
             </div>
 
-            {user.id === post.user_id ?
+            {user && user.id === post.user_id ?
             <div>
                 <OpenModalButton
                     className="update-post-button"
