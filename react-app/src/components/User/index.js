@@ -16,7 +16,7 @@ export const UserDetail = () => {
     userPosts = Object.values(userPosts).reverse()
     // console.log("UserDetails userPosts: ", userPosts)
 
-    const user = useSelector((state) => state.session.user)
+    // const user = useSelector((state) => state.session.user)
     // console.log("UserDetail user: ", user)
 
     function lowBudgetDateConverter(date) {
@@ -33,25 +33,25 @@ export const UserDetail = () => {
     }, [dispatch, userPosts.length])
 
     if (!userPosts) return null
-
+    
     return (
         <div className="user-detail-container">
+            <p className="user-detail-name">
+                {post.first_name} {post.last_name}
+            </p>
+            {userPosts.map((post) => (
             <div className="user-detail-upper">
-                <img className="user-detail-profile-pic" src={user.profile_pic} />
+                <img className="user-detail-profile-pic" src={post.profile_pic} />
                 <div className="user-detail-user-info">
-                    <p className="user-detail-name">
-                        {user.first_name} {user.last_name}
+                    <p className="user-detail-bottom">
+                        {post.username}
                     </p>
                     <p className="user-detail-bottom">
-                        {user.username}
-                    </p>
-                    <p className="user-detail-bottom">
-                        Joined: {lowBudgetDateConverter(user.created_at)}
+                        Joined: {lowBudgetDateConverter(post.created_at)}
                     </p>
                 </div>
-            </div>
-            {userPosts.map((post) => (
                 <PostDetail post={post} />
+            </div>
             ))}
         </div>
     )

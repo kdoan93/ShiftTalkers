@@ -16,6 +16,9 @@ function Navigation({ isLoaded }){
 			{sessionUser ? (
 				<div>
 					<div>
+						<div>
+							sessionUser: {sessionUser.username}
+						</div>
 						<NavLink exact to={`/users/${sessionUser.id}`} >
 							<img style={ {width: '75px', height: '75px', borderRadius: '50%'} } src={sessionUser.profile_pic} className="navigation-profile-pic" border='0' />
 						</NavLink>

@@ -28,7 +28,11 @@ class Post(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             # 'comment': self.comment,
+            'first_name': self.user.first_name,
+            'last_name': self.user.last_name,
             'username': self.user.username,
             'profile_pic': self.user.profile_pic,
+            'created_at': self.user.created_at,
+            'username': self.user.username,
             # 'like': self.likes,
         }
