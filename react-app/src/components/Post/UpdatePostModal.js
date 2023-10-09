@@ -22,7 +22,7 @@ export const UpdatePostModal = ({ post }) => {
 
         try {
             await dispatch( postsActions.thunkUpdatePost( { media, body }, post.id) )
-            // closeModal()
+            closeModal()
         } catch (error) {
             if (error) {
                 const data = await error.json()

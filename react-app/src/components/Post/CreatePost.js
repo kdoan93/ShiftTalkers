@@ -18,16 +18,6 @@ export const CreatePostModal = () => {
     console.log("CreatePost media: ", media)
 
     useEffect(() => {
-        const errors = {}
-        if (!body) errors.body = "Post body needs content!"
-        // if (
-        //     media &&
-        //     !media.endsWith("jpg") &&
-        //     !media.endsWith("jpeg") &&
-        //     !media.endsWith("png")
-        //     ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
-
-        setErrors(errors)
     }, [dispatch, media, body])
 
     const handleSubmit = async (e) => {
@@ -35,9 +25,7 @@ export const CreatePostModal = () => {
         setErrors({})
 
         try {
-            await dispatch(
-                postsActions.thunkCreatePost({ media, body })
-            )
+            await dispatch( postsActions.thunkCreatePost({ media, body }) )
             setSubmitted(true)
             closeModal()
         } catch (errors) {

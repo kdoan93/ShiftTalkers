@@ -19,7 +19,7 @@ const posts = Object.values(getPosts).reverse()
     dispatch(thunkGetPosts())
     // dispatch(thunkGetComments())
     // dispatch(thunkGetPostComments(post.id))
-  }, [dispatch]);
+  }, [dispatch, posts.length]);
 
   if (!posts) return null
 
