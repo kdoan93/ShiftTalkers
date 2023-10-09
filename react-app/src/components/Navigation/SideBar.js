@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './SideBar.css';
-import { logout } from '../../store/session';
+import { logout, thunkGetUser } from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
@@ -23,6 +23,12 @@ function SideBar({ isLoaded }){
       };
 
     const closeMenu = () => setShowMenu(false);
+
+    // useEffect(() => {
+    //     dispatch(thunkGetUser(sessionUser.id))
+    // }, [dispatch])
+
+    // if (!sessionUser) return null
 
 	return (
 		<div className='sideBar'>

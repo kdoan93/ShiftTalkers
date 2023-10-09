@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { thunkGetUserPosts } from "../../store/post"
 import { PostDetail } from "../Post"
 import { thunkGetUser } from "../../store/session"
+import { PostComments } from "../Comment"
 
 
 export const UserDetail = () => {
@@ -31,7 +32,7 @@ export const UserDetail = () => {
         dispatch(thunkGetUserPosts(userId))
         // dispatch(thunkGetUser(userId))
     // }, [dispatch, userPosts.length])
-    }, [dispatch, userPosts.length])
+    }, [dispatch, userPosts.length, userId])
 
     if (!userPosts.length) return null
 
