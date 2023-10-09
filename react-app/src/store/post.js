@@ -65,7 +65,7 @@ export const thunkGetUserPosts = (userId) => async (dispatch) => {
     if (res.ok) {
         const posts = await res.json()
         dispatch(getPosts(posts))
-        return posts
+        return res
     } else {
         const errors = res.json()
         return errors

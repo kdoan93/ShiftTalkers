@@ -51,7 +51,7 @@ export const thunkGetPostComments = (postId) => async (dispatch) => {
     if (res.ok) {
         const comments = await res.json()
         dispatch(getComments(comments))
-        return comments
+        return res
     } else {
         const errors = await res.json()
         return errors
@@ -64,7 +64,7 @@ export const thunkGetUsersComments = () => async (dispatch) => {
     if (res.ok) {
         const comments = await res.json()
         dispatch(getComments(comments))
-        return comments
+        return res
     } else {
         const errors = await res.json()
         return errors
