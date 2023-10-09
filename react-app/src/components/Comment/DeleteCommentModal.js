@@ -1,7 +1,7 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as commentActions from '../../store/comment'
-import { useEffect } from "react";
 
 
 export const DeleteCommentModal = ({ comment, postId }) => {

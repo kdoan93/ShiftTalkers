@@ -13,6 +13,7 @@ import { DeleteCommentModal } from "./DeleteCommentModal"
 export const PostComments = ({ post }) => {
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState({})
+    const [submitted, setSubmitted] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -37,10 +38,12 @@ export const PostComments = ({ post }) => {
         try {
             await dispatch(commentActions.thunkCreateComment({ comment }, post.id)
             )
+            setSubmitted(true)
             // closeModal()
         } catch (errors) {
             if (errors) {
                 setErrors(errors)
+                setSubmitted(true)
             }
         }
     }
@@ -60,7 +63,7 @@ export const PostComments = ({ post }) => {
                         </div>
 
                         <div className="post-comment-comment">{comment.comment}</div>
-                        {comment.user_id === currentUser.id ?
+                        {currentUser && comment.user_id === currentUser.id ?
                             <div>
                                 <OpenModalButton
                                     className="update-comment-button"
@@ -80,16 +83,21 @@ export const PostComments = ({ post }) => {
                     </div>
                 ))}
             </div>
-            <h3>Leave a comment!</h3>
-            <form onSubmit={handleSubmit}>
-                <textarea
-                    type="text"
-                    value={comment}
-                    onChange={e => setComment(e.target.value)}
-                    placeholder="Leave a comment"
-                ></textarea>
-                <button type="submit">Submit comment</button>
-            </form>
+            {currentUser &&
+            <div>
+                <h3>Leave a comment!</h3>
+                <form onSubmit={handleSubmit}>
+                    <textarea
+                        type="text"
+                        value={comment}
+                        onChange={e => setComment(e.target.value)}
+                        placeholder="Leave a comment"
+                        ></textarea>
+                    {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                    <button type="submit">Submit comment</button>
+                </form>
+            </div>
+            }
         </div>
     )
 }
