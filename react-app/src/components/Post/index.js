@@ -8,6 +8,7 @@ import OpenModalButton from "../OpenModalButton";
 import { thunkGetPostComments } from "../../store/comment";
 import { UpdatePostModal } from "./UpdatePostModal";
 import { DeletePostModal } from "./DeletePostModal";
+import { PostComments } from "../Comment";
 
 export const PostDetail = ({ post }) => {
 
@@ -17,10 +18,10 @@ export const PostDetail = ({ post }) => {
 
     const user = useSelector((state) => state.session.user)
 
-    // let comments = useSelector((state) => state.comments.allComments)
-    // comments = Object.values(comments)
-    // console.log("PostDetail comments: ", comments[0].comment)
-    // console.log("PostDetail post: ", post)
+    let comments = useSelector((state) => state.comments.allComments)
+    comments = Object.values(comments)
+    // console.log("PostDetail comments: ", comments)
+    console.log("PostDetail post: ", post)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -35,10 +36,10 @@ export const PostDetail = ({ post }) => {
     }
 
     useEffect(() => {
-        // dispatch(thunkGetPostComments(post.id))
-    }, [dispatch, userId])
+        dispatch(thunkGetPostComments(post.id))
+    }, [dispatch])
 
-    // if (!comments) return null
+    if (!comments) return null
 
     return (
         <div className="post-details-container">
@@ -61,6 +62,10 @@ export const PostDetail = ({ post }) => {
             <div className="post-pics">
                 <img width="500px" src={post.media} />
             </div>
+
+            {/* <div>
+                <PostComments post={post} />
+            </div> */}
 
             {user && user.id === post.user_id ?
             <div>
