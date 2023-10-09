@@ -26,7 +26,7 @@ export const UpdatePostModal = ({ post }) => {
         //     !media.endsWith("jpeg") &&
         //     !media.endsWith("png")
         //     ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
-
+        dispatch(postsActions.thunkGetPostInfo(post.id))
         setErrors(errors)
     }, [dispatch, media, body])
 

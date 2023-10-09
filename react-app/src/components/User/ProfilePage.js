@@ -8,7 +8,7 @@ import { thunkGetUser } from "../../store/session"
 import { PostComments } from "../Comment"
 
 
-export const UserDetail = () => {
+export const ProfilePage = ({ user }) => {
     const history = useHistory()
     const { userId } = useParams()
     const dispatch = useDispatch()
@@ -17,7 +17,7 @@ export const UserDetail = () => {
     userPosts = Object.values(userPosts).reverse()
     // console.log("UserDetails userPosts: ", userPosts)
 
-    const user = useSelector((state) => state.session.user)
+    // const user = useSelector((state) => state.session.user)
     // console.log("UserDetail user: ", user)
 
     function lowBudgetDateConverter(date) {
@@ -29,7 +29,7 @@ export const UserDetail = () => {
     }
 
     useEffect(() => {
-        dispatch(thunkGetUserPosts(userId))
+        dispatch(thunkGetUserPosts(user.id))
         // dispatch(thunkGetUser(userId))
     // }, [dispatch, userPosts.length])
     }, [dispatch, userPosts.length, userId])
@@ -39,26 +39,24 @@ export const UserDetail = () => {
     return (
         <div className="user-detail-container">
             <div className="user-detail-upper">
-                <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} />
-                {/* <img className="user-detail-profile-pic" src={user.profile_pic} /> */}
+                {/* <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} /> */}
+                <img className="user-detail-profile-pic" src={user.profile_pic} />
                 <div className="user-detail-user-info">
                     <p className="user-detail-name">
-                        {userPosts[0].first_name} {userPosts[0].last_name}
-                        {/* {user.first_name} {user.last_name} */}
+                        {/* {userPosts[0].first_name} {userPosts[0].last_name} */}
+                        {user.first_name} {user.last_name}
                     </p>
                     <p className="user-detail-bottom">
-                        {userPosts[0].username}
-                        {/* {user.username} */}
+                        {user.username}
                     </p>
                     <p className="user-detail-bottom">
-                        Joined: {lowBudgetDateConverter(userPosts[0].created_at)}
-                        {/* Joined: {lowBudgetDateConverter(user.created_at)} */}
+                        Joined: {lowBudgetDateConverter(user.created_at)}
                     </p>
                 </div>
             </div>
-            {userPosts.map((post) => (
+            {userPosts ? userPosts.map((post) => (
                 <PostDetail post={post} />
-            ))}
+            )) : <h2>User has no post yet!</h2>}
         </div>
     )
 }
