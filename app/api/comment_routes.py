@@ -23,6 +23,30 @@ def get_all_comments():
 
     return all_comment_list
 
+@comment_routes.route('/<int:id>')
+def get_comment_by_id(id):
+    """
+    Query for comment by comment.id
+    """
+    one_comment = Comment.query.get(id)
+
+    if not one_comment:
+        return { "message": "Comment not found!" }, 404
+
+    return one_comment.to_dict()
+
+@comment_routes.route('/<int:id>')
+def get_comment_by_id(id):
+    """
+    Query for comment by comment.id
+    """
+    one_comment = Comment.query.get(id)
+
+    if not one_comment:
+        return { "message": "Comment not found!" }, 404
+
+    return one_comment.to_dict()
+
 
 @comment_routes.route("/all")
 @login_required

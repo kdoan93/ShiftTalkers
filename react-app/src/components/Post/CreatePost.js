@@ -15,7 +15,7 @@ export const CreatePostModal = () => {
     const { closeModal } = useModal()
 
 
-    console.log("CreatePost media: ", media)
+    // console.log("CreatePost media: ", media)
 
     useEffect(() => {
         const errors = {}
@@ -28,7 +28,7 @@ export const CreatePostModal = () => {
         //     ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
 
         setErrors(errors)
-    }, [dispatch, media, body])
+    }, [dispatch, media, body, submitted])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -38,8 +38,8 @@ export const CreatePostModal = () => {
             await dispatch(
                 postsActions.thunkCreatePost({ media, body })
             )
-            closeModal()
             setSubmitted(true)
+            closeModal()
         } catch (errors) {
             if (errors) {
                 setErrors(errors)

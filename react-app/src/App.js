@@ -5,9 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import SideBar from "./components/Navigation/SideBar";
-import { LandingPage } from "./components/LandingPage/LandingPage";
-import { UserDetail } from "./components/User";
+import { PostDetail } from "./components/Post";
+import { PostDetail } from "./components/Post";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,18 +31,6 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route exact path="/users/:userId">
-            <UserDetail />
-          </Route>
-          <Route>
-            <img style={{ width: '80%', height: '100%', marginLeft: "25%", cursor: "pointer" }}
-              src="https://cdn.mos.cms.futurecdn.net/PuXipAW3AXUzUJ4uYyxPKC-1200-80.jpg" alt="404"
-              onClick={onClick}
-            />
           </Route>
         </Switch>
       )}

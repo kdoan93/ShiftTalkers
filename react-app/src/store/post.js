@@ -11,23 +11,38 @@ const DELETE_POST = "posts/deletePost"
 // ACTION CREATORS
 
 const getPosts = (posts) => {
-    return { type: GET_POSTS, posts }
+    return {
+        type: GET_POSTS,
+        posts
+    }
 }
 
 const getPost = (post) => {
-    return { type: GET_POST, post }
+    return {
+        type: GET_POST,
+        post
+    }
 }
 
 const createPost = (post) => {
-    return { type: CREATE_POST, post }
+    return {
+        type: CREATE_POST,
+        post
+    }
 }
 
 const updatePost = (post) => {
-    return { type: UPDATE_POST, post }
+    return {
+        type: UPDATE_POST,
+        post
+    }
 }
 
 const deletePost = (postId) => {
-    return { type: DELETE_POST, postId }
+    return {
+        type: DELETE_POST,
+        postId
+    }
 }
 
 
@@ -65,7 +80,7 @@ export const thunkGetUserPosts = (userId) => async (dispatch) => {
     if (res.ok) {
         const posts = await res.json()
         dispatch(getPosts(posts))
-        return posts
+        return res
     } else {
         const errors = res.json()
         return errors

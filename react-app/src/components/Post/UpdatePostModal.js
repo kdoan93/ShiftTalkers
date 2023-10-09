@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as postsActions from "../../store/post"
+import { useHistory } from "react-router-dom";
 
 
 export const UpdatePostModal = ({ post }) => {
@@ -10,12 +11,13 @@ export const UpdatePostModal = ({ post }) => {
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState()
 
+    const history = useHistory()
     const dispatch = useDispatch()
 
     const { closeModal } = useModal()
 
 
-    console.log("CreatePost media: ", media)
+    // console.log("UpdatePost media: ", media)
 
     useEffect(() => {
         const errors = {}
@@ -28,7 +30,7 @@ export const UpdatePostModal = ({ post }) => {
         //     ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
 
         setErrors(errors)
-    }, [dispatch, media, body])
+    }, [dispatch, media, body, submitted])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -36,8 +38,9 @@ export const UpdatePostModal = ({ post }) => {
 
         try {
             await dispatch( postsActions.thunkUpdatePost( { media, body }, post.id) )
-            closeModal()
             setSubmitted(true)
+            closeModal()
+            // history.push('/')
         } catch (errors) {
             if (errors) {
                 setErrors(errors)

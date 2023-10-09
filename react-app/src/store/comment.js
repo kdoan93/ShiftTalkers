@@ -11,23 +11,38 @@ const DELETE_COMMENT = "comments/deleteComment"
 // ACTION CREATORS
 
 const getComments = (comments) => {
-    return { type: GET_COMMENTS, comments }
+    return {
+        type: GET_COMMENTS,
+        comments
+    }
 }
 
 const getComment = (comment) => {
-    return { type: GET_COMMENT, comment }
+    return {
+        type: GET_COMMENT,
+        comment
+    }
 }
 
 const createComment = (comment) => {
-    return { type: CREATE_COMMENT, comment }
+    return {
+        type: CREATE_COMMENT,
+        comment
+    }
 }
 
 const updateComment = (comment) => {
-    return { type: UPDATE_COMMENT, comment }
+    return {
+        type: UPDATE_COMMENT,
+        comment
+    }
 }
 
 const deleteComment = (commentId) => {
-    return { type: DELETE_COMMENT, commentId }
+    return {
+        type: DELETE_COMMENT,
+        commentId
+    }
 }
 
 // THUNK ACTION CREATOR
@@ -45,13 +60,17 @@ export const thunkGetComments = () => async (dispatch) => {
     }
 }
 
+// export const thunkGetComment = ()
+
 export const thunkGetPostComments = (postId) => async (dispatch) => {
     const res = await csrfFetch(`/api/posts/${postId}/comments`)
 
     if (res.ok) {
         const comments = await res.json()
         dispatch(getComments(comments))
-        return comments
+        // console.log("store/comment comments: ", comments)
+        // console.log("store/comment res: ", res)
+        return res
     } else {
         const errors = await res.json()
         return errors
@@ -64,7 +83,7 @@ export const thunkGetUsersComments = () => async (dispatch) => {
     if (res.ok) {
         const comments = await res.json()
         dispatch(getComments(comments))
-        return comments
+        return res
     } else {
         const errors = await res.json()
         return errors
