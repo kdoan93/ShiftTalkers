@@ -6,6 +6,7 @@ import './Navigation.css';
 import { thunkGetUser } from '../../store/session';
 
 function Navigation({ isLoaded }){
+	
 	let sessionUser = useSelector(state => state.session.user);
 
 	return (

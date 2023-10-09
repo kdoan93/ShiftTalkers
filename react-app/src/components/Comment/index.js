@@ -5,18 +5,23 @@ import { thunkGetComments, thunkGetPostComments } from "../../store/comment"
 
 export const PostComments = ({ post }) => {
     const dispatch = useDispatch()
-    // let comments = useSelector((state) => state.comments.allComments)
-    // comments = Object.values(comments)
+    const allComments = useSelector((state) => state.comments.allComments)
+    const comments = Object.values(allComments)
     // console.log("PostComments comments: ", comments)
     // console.log("PostComments post: ", post)
 
     useEffect(() => {
         // dispatch(thunkGetComments())
-    }, [dispatch])
+        dispatch(thunkGetPostComments(post.id))
+    }, [dispatch, post.id])
     return (
         <div>
             <h2>Post comment component</h2>
-            {/* {comments.forEach((comment) => comment.user_id === post.user_id ? <div>user_id matches!</div> : <></> )} */}
+            <div>
+                {comments.map((comment) => (
+                    <div>{comment.comment}</div>
+                ))}
+            </div>
         </div>
     )
 }

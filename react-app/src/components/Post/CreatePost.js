@@ -38,8 +38,8 @@ export const CreatePostModal = () => {
             await dispatch(
                 postsActions.thunkCreatePost({ media, body })
             )
-            closeModal()
             setSubmitted(true)
+            closeModal()
         } catch (errors) {
             if (errors) {
                 setErrors(errors)

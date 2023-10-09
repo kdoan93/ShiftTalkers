@@ -40,7 +40,7 @@ function SideBar({ isLoaded }){
                         />
 					</div>
 					<div>
-						***User details***
+						<NavLink exact to={`/users/${sessionUser.id}`}>Profile Page</NavLink>
 					</div>
 					<div>
                         <p className='sidebar-logout sidebar-links' onClick={handleLogout}>Log Out</p>

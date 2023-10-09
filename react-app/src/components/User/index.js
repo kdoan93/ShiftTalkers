@@ -29,24 +29,25 @@ export const UserDetail = () => {
 
     useEffect(() => {
         dispatch(thunkGetUserPosts(userId))
-        dispatch(thunkGetUser(userId))
+        // dispatch(thunkGetUser(userId))
+    // }, [dispatch, userPosts.length])
     }, [dispatch, userPosts.length])
 
-    if (!userPosts) return null
+    if (!userPosts.length) return null
 
     return (
         <div className="user-detail-container">
             <div className="user-detail-upper">
-                <img className="user-detail-profile-pic" src={user.profile_pic} />
+                <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} />
                 <div className="user-detail-user-info">
                     <p className="user-detail-name">
-                        {user.first_name} {user.last_name}
+                        {userPosts[0].first_name} {userPosts[0].last_name}
                     </p>
                     <p className="user-detail-bottom">
-                        {user.username}
+                        {userPosts[0].username}
                     </p>
                     <p className="user-detail-bottom">
-                        Joined: {lowBudgetDateConverter(user.created_at)}
+                        Joined: {lowBudgetDateConverter(userPosts[0].created_at)}
                     </p>
                 </div>
             </div>

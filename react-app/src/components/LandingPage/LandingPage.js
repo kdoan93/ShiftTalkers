@@ -3,20 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import "./LandingPage.css"
 import { thunkGetPosts } from "../../store/post";
 import { PostDetail } from "../Post";
+import { thunkGetComments, thunkGetPostComments } from "../../store/comment";
 
 export const LandingPage = () => {
   const dispatch = useDispatch();
 
-//   const getRestaurants = useSelector((state) => state.restaurant.allRestaurants);
 const getPosts = useSelector((state) => state.posts.allPosts)
 const posts = Object.values(getPosts).reverse()
-//   const restaurants = Object.values(getRestaurants);
-// console.log("LandingPage posts: ", posts)
+
+const allComments = useSelector((state) => state.comments.allComments)
+const commentsArray = Object.values(allComments)
+console.log("LandingPage commentsArray: ", commentsArray)
 
   useEffect(() => {
-    // dispatch(thunkGetRestaurants());
     dispatch(thunkGetPosts())
+    // dispatch(thunkGetComments())
+    // dispatch(thunkGetPostComments(post.id))
   }, [dispatch]);
+
+  if (!posts) return null
 
   return (
     <div className="landing-page-container">

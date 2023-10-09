@@ -36,8 +36,8 @@ export const UpdatePostModal = ({ post }) => {
 
         try {
             await dispatch( postsActions.thunkUpdatePost( { media, body }, post.id) )
-            closeModal()
             setSubmitted(true)
+            closeModal()
         } catch (errors) {
             if (errors) {
                 setErrors(errors)

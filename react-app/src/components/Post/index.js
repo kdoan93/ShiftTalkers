@@ -14,14 +14,14 @@ export const PostDetail = ({ post }) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    const { userId } = useParams()
+    const { postId } = useParams()
 
     const user = useSelector((state) => state.session.user)
 
-    let comments = useSelector((state) => state.comments.allComments)
-    comments = Object.values(comments)
+    // const allComments = useSelector((state) => state.comments.allComments)
+    // const comments = Object.values(allComments)
     // console.log("PostDetail comments: ", comments)
-    console.log("PostDetail post: ", post)
+    // console.log("PostDetail post: ", post)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -36,10 +36,10 @@ export const PostDetail = ({ post }) => {
     }
 
     useEffect(() => {
-        dispatch(thunkGetPostComments(post.id))
+        // dispatch(thunkGetPostComments(post.id))
     }, [dispatch])
 
-    if (!comments) return null
+    // if (!comments) return null
 
     return (
         <div className="post-details-container">
@@ -63,9 +63,15 @@ export const PostDetail = ({ post }) => {
                 <img width="500px" src={post.media} />
             </div>
 
-            {/* <div>
-                <PostComments post={post} />
-            </div> */}
+            <div>
+                {/* <PostComments post={post} /> */}
+
+                {/* {comments.map((comment) => (
+                    <div>
+                        {comment.comment}
+                    </div>
+                ))} */}
+            </div>
 
             {user && user.id === post.user_id ?
             <div>
@@ -81,7 +87,7 @@ export const PostDetail = ({ post }) => {
                 />
             </div>
             :
-            <div>Not your post!</div>
+            <div>DEBUG Not your post!</div>
             // Dirty delete ^^^ when done
             }
 
