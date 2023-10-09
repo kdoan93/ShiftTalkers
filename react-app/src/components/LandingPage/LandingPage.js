@@ -11,9 +11,9 @@ export const LandingPage = () => {
 const getPosts = useSelector((state) => state.posts.allPosts)
 const posts = Object.values(getPosts).reverse()
 
-const allComments = useSelector((state) => state.comments.allComments)
-const commentsArray = Object.values(allComments)
-console.log("LandingPage commentsArray: ", commentsArray)
+// const allComments = useSelector((state) => state.comments.allComments)
+// const commentsArray = Object.values(allComments)
+// console.log("LandingPage commentsArray: ", commentsArray)
 
   useEffect(() => {
     dispatch(thunkGetPosts())

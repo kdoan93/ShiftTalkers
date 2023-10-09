@@ -43,6 +43,7 @@ export const thunkGetUser = (userId) => async (dispatch) => {
 	if (res.ok) {
 		const post = await res.json()
 		dispatch(getUser(post))
+		console.log("store/session res: ", res)
 		return res
 	} else {
 		const errors = await res.json()
@@ -124,7 +125,7 @@ export default function reducer(state = initialState, action) {
 
 		case GET_USER:
 			return { ...state, user: action.payload }
-			
+
 		default:
 			return state;
 	}

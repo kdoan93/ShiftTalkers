@@ -20,7 +20,7 @@ export const PostDetail = ({ post }) => {
 
     // const allComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(allComments)
-    // console.log("PostDetail comments: ", comments)
+    // console.log("PostDetail comments: ", comments.length)
     // console.log("PostDetail post: ", post)
 
     function lowBudgetDateConverter(date) {
@@ -65,6 +65,11 @@ export const PostDetail = ({ post }) => {
 
             <div>
                 {/* <PostComments post={post} /> */}
+                <OpenModalButton
+                    className="update-post-button"
+                    buttonText="Read comments"
+                    modalComponent={<PostComments post={post} />}
+                />
 
                 {/* {comments.map((comment) => (
                     <div>
@@ -87,8 +92,9 @@ export const PostDetail = ({ post }) => {
                 />
             </div>
             :
-            <div>DEBUG Not your post!</div>
+            // <div>DEBUG Not your post!</div>
             // Dirty delete ^^^ when done
+            <></>
             }
 
 

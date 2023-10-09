@@ -16,7 +16,7 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-@login_required
+# @login_required
 def user(id):
     """
     Query for a user by id and returns that user in a dictionary
@@ -52,4 +52,3 @@ def user_posts(userId):
         return { "message": "User has no posts yet!" }, 404
 
     return user_posts
-
