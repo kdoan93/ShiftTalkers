@@ -7,7 +7,6 @@ import * as postsActions from "../../store/post"
 export const UpdatePostModal = ({ post }) => {
     const [media, setMedia] = useState(post.media)
     const [body, setBody] = useState(post.body)
-    const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState()
 
     const dispatch = useDispatch()
@@ -15,20 +14,7 @@ export const UpdatePostModal = ({ post }) => {
     const { closeModal } = useModal()
 
 
-    console.log("CreatePost media: ", media)
-
-    useEffect(() => {
-        const errors = {}
-        if (!body) errors.body = "Post body needs content!"
-        // if (
-        //     media &&
-        //     !media.endsWith("jpg") &&
-        //     !media.endsWith("jpeg") &&
-        //     !media.endsWith("png")
-        //     ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
-        dispatch(postsActions.thunkGetPostInfo(post.id))
-        setErrors(errors)
-    }, [dispatch, media, body])
+    // console.log("CreatePost media: ", media)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -36,15 +22,28 @@ export const UpdatePostModal = ({ post }) => {
 
         try {
             await dispatch( postsActions.thunkUpdatePost( { media, body }, post.id) )
-            setSubmitted(true)
             closeModal()
-        } catch (errors) {
-            if (errors) {
-                setErrors(errors)
-                setSubmitted(true)
+        } catch (error) {
+            if (error) {
+                const data = await error.json()
+                setErrors(data.errors)
+                return data
             }
         }
     }
+
+        useEffect(() => {
+            const errors = {}
+            // if (!body) errors.body = "Post body needs content!"
+            // if (
+            //     media &&
+            //     !media.endsWith("jpg") &&
+            //     !media.endsWith("jpeg") &&
+            //     !media.endsWith("png")
+            //     ) errors.media = "Media URL must end in .png, .jpg, or .jpeg";
+            // setErrors(errors)
+            dispatch(postsActions.thunkGetPostInfo(post.id))
+        }, [dispatch, media, body])
 
     return (
         <div className="create-post-container">
@@ -64,6 +63,7 @@ export const UpdatePostModal = ({ post }) => {
                     onChange={e => setBody(e.target.value)}
                     placeholder="Leave a message ShiftTalker"
                 ></textarea>
+                {errors && <div className="bottom-error">Post needs at least one character</div>}
                 <button type="submit">Update Post</button>
             </form>
         </div>

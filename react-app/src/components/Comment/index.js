@@ -1,17 +1,25 @@
-import { useEffect } from "react"
-import "./comment.css"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkGetPostComments } from "../../store/comment"
 import { thunkGetUser } from "../../store/session"
 import { NavLink } from "react-router-dom"
 import { useModal } from "../../context/Modal"
+import OpenModalButton from "../OpenModalButton"
+import { UpdateCommentModal } from "./UpdateCommentModal"
+import * as commentActions from "../../store/comment"
+import "./comment.css"
+import { DeleteCommentModal } from "./DeleteCommentModal"
 
 export const PostComments = ({ post }) => {
+    const [comment, setComment] = useState("")
+    const [errors, setErrors] = useState({})
+
     const dispatch = useDispatch()
+
     const { closeModal } = useModal()
 
     const currentUser = useSelector((state) => state.session.user)
-    console.log("PostComments currentUser: ", currentUser)
+    // console.log("PostComments currentUser: ", currentUser)
 
     const allComments = useSelector((state) => state.comments.allComments)
     const comments = Object.values(allComments)
@@ -21,6 +29,21 @@ export const PostComments = ({ post }) => {
         dispatch(thunkGetPostComments(post.id))
         // dispatch(thunkGetUser(post.user_id))
     }, [dispatch, post.id, comments.length])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setErrors({})
+
+        try {
+            await dispatch(commentActions.thunkCreateComment({ comment }, post.id)
+            )
+            // closeModal()
+        } catch (errors) {
+            if (errors) {
+                setErrors(errors)
+            }
+        }
+    }
 
     if (!comments) return null
 
@@ -37,11 +60,36 @@ export const PostComments = ({ post }) => {
                         </div>
 
                         <div className="post-comment-comment">{comment.comment}</div>
+                        {comment.user_id === currentUser.id ?
+                            <div>
+                                <OpenModalButton
+                                    className="update-comment-button"
+                                    buttonText="Update"
+                                    modalComponent={<UpdateCommentModal comment={comment} />}
+                                />
+                                <OpenModalButton
+                                    className="delete-comment-button"
+                                    buttonText="Delete"
+                                    modalComponent={<DeleteCommentModal comment={comment} postId={post.id} />}
+                                />
 
+                            </div>
+                            :
+                            <></>
+                        }
                     </div>
                 ))}
             </div>
-            {/* {comments ? <p>has comments</p> : <p>leave a comment!</p>} */}
+            <h3>Leave a comment!</h3>
+            <form onSubmit={handleSubmit}>
+                <textarea
+                    type="text"
+                    value={comment}
+                    onChange={e => setComment(e.target.value)}
+                    placeholder="Leave a comment"
+                ></textarea>
+                <button type="submit">Submit comment</button>
+            </form>
         </div>
     )
 }

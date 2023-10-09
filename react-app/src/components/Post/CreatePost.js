@@ -8,7 +8,7 @@ export const CreatePostModal = () => {
     const [media, setMedia] = useState("")
     const [body, setBody] = useState("")
     const [submitted, setSubmitted] = useState(false)
-    const [errors, setErrors] = useState()
+    const [errors, setErrors] = useState({})
 
     const dispatch = useDispatch()
 

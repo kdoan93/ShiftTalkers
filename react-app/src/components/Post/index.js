@@ -79,18 +79,18 @@ export const PostDetail = ({ post }) => {
             </div>
 
             {user && user.id === post.user_id ?
-            <div>
-                <OpenModalButton
-                    className="update-post-button"
-                    buttonText="Update"
-                    modalComponent={<UpdatePostModal post={post} />}
-                />
-                <OpenModalButton
-                    className="delete-post-button"
-                    buttonText="Delete"
-                    modalComponent={<DeletePostModal post={post} />}
-                />
-            </div>
+                <div>
+                    <OpenModalButton
+                        className="update-post-button"
+                        buttonText="Update"
+                        modalComponent={<UpdatePostModal post={post} />}
+                    />
+                    <OpenModalButton
+                        className="delete-post-button"
+                        buttonText="Delete"
+                        modalComponent={<DeletePostModal post={post} />}
+                    />
+                </div>
             :
             // <div>DEBUG Not your post!</div>
             // Dirty delete ^^^ when done

@@ -26,8 +26,8 @@ export const DeletePostModal = ({ post }) => {
                 <p className="deleteParagraph">Are you sure you want to delete this post?</p>
             </div>
             <div className="deleteButtons">
-                <button className="b yesButton" onClick={handleClick}> Yes (Delete Review) </button>
-                <button className="b noButton" onClick={closeModal}> No (Keep Review) </button>
+                <button className="b yesButton" onClick={handleClick}> Yes (Delete Post) </button>
+                <button className="b noButton" onClick={closeModal}> No (Keep Post) </button>
             </div>
         </div>
     )

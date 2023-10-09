@@ -45,6 +45,19 @@ export const thunkGetComments = () => async (dispatch) => {
     }
 }
 
+export const thunkGetComment = (commentId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/comments/${commentId}`)
+
+    if (res.ok) {
+        const comment = await res.json()
+        dispatch(getComment(comment))
+        return res
+    } else {
+        const errors = res.json()
+        return errors
+    }
+}
+
 export const thunkGetPostComments = (postId) => async (dispatch) => {
     const res = await csrfFetch(`/api/posts/${postId}/comments`)
 
