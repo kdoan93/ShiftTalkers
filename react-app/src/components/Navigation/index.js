@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import { useSelector } from 'react-redux';
 import './Navigation.css';
-import { thunkGetUser } from '../../store/session';
 
 function Navigation({ isLoaded }){
 

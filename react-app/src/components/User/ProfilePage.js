@@ -2,15 +2,12 @@ import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min
 import "./User.css"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { thunkGetUserPosts } from "../../store/post"
+import {  thunkGetUserPosts } from "../../store/post"
 import { PostDetail } from "../Post"
-import { thunkGetUser } from "../../store/session"
-import { PostComments } from "../Comment"
 
 
 export const ProfilePage = () => {
     const history = useHistory()
-    const { userId } = useParams()
     const dispatch = useDispatch()
 
     let userPosts = useSelector((state) => state.posts.allPosts)
@@ -19,6 +16,9 @@ export const ProfilePage = () => {
 
     const user = useSelector((state) => state.session.user)
     // console.log("UserDetail user: ", user)
+
+    const filterPosts = userPosts.map(post => post.user_id === user.id)
+    console.log("ProfilePage filterPosts: ", filterPosts)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -30,12 +30,12 @@ export const ProfilePage = () => {
 
     useEffect(() => {
         dispatch(thunkGetUserPosts(user.id))
-        // dispatch(thunkGetUser(userId))
-    // }, [dispatch, userPosts.length])
-    }, [dispatch, userPosts.length, userId, user.id])
+    }, [dispatch, userPosts.length])
+    // }, [dispatch, filterPosts.length])
 
     if (!userPosts) return null
     if (!user) return null
+    // if (!filterPosts) return null
 
     return (
         <div className="user-detail-container">
@@ -55,7 +55,7 @@ export const ProfilePage = () => {
                     </p>
                 </div>
             </div>
-            {userPosts ? userPosts.map((post) => (
+            {filterPosts.length ? filterPosts.map((post) => (
                 <PostDetail post={post} />
             )) : <h2>User has no post yet!</h2>}
         </div>

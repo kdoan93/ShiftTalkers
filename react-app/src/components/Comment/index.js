@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { thunkGetPostComments } from "../../store/comment"
-import { thunkGetUser } from "../../store/session"
 import { NavLink } from "react-router-dom"
 import { useModal } from "../../context/Modal"
 import OpenModalButton from "../OpenModalButton"

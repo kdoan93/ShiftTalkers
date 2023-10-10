@@ -7,7 +7,7 @@ const GET_USER = "session/GET_USER";
 
 const getUser = (user) => ({
 	type: GET_USER,
-	payload: user
+	user
 })
 
 const setUser = (user) => ({
@@ -41,9 +41,9 @@ export const thunkGetUser = (userId) => async (dispatch) => {
 	const res = await csrfFetch(`/api/users/${userId}`)
 
 	if (res.ok) {
-		const post = await res.json()
-		dispatch(getUser(post))
-		console.log("store/session res: ", res)
+		const data = await res.json()
+		dispatch(getUser(data))
+		console.log("store/session thunkGetUser res: ", res)
 		return res
 	} else {
 		const errors = await res.json()
@@ -89,7 +89,7 @@ export const logout = () => async (dispatch) => {
 	}
 };
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (username, email, first_name, last_name, profile_pic, password) => async (dispatch) => {
 	const response = await fetch("/api/auth/signup", {
 		method: "POST",
 		headers: {
@@ -98,6 +98,9 @@ export const signUp = (username, email, password) => async (dispatch) => {
 		body: JSON.stringify({
 			username,
 			email,
+			first_name,
+			last_name,
+			profile_pic,
 			password,
 		}),
 	});
@@ -117,14 +120,25 @@ export const signUp = (username, email, password) => async (dispatch) => {
 };
 
 export default function reducer(state = initialState, action) {
+	let newState;
 	switch (action.type) {
+
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
 
+		// case GET_USER:
+		// 	return {
+		// 		...state,
+		// 		user: action.payload
+		// 	}
+
 		case GET_USER:
-			return { ...state, user: action.payload }
+			newState = { ...state, user: {} }
+			newState.user = action.user
+			console.log("store/session GET_USER newState: ", newState)
+			return newState
 
 		default:
 			return state;

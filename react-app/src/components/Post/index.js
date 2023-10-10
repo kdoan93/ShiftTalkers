@@ -9,6 +9,7 @@ import { thunkGetComments, thunkGetPostComments } from "../../store/comment";
 import { UpdatePostModal } from "./UpdatePostModal";
 import { DeletePostModal } from "./DeletePostModal";
 import { PostComments } from "../Comment";
+import { thunkGetPostInfo } from "../../store/post";
 
 export const PostDetail = ({ post }) => {
 
@@ -40,7 +41,8 @@ export const PostDetail = ({ post }) => {
     useEffect(() => {
         // dispatch(thunkGetPostComments(post.id))
         // dispatch(thunkGetComments())
-    }, [dispatch, post.id])
+        dispatch(thunkGetPostInfo(post.id))
+    }, [dispatch, post.id, post])
 
     // if (!comments) return null
 
@@ -67,26 +69,12 @@ export const PostDetail = ({ post }) => {
             </div>
 
             <div>
-
                 <PostComments post={post} />
-
-                {/* {filterComments.map((comment) => (
-                    <div>
-                        {comment.comment}
-                    </div>
-                ))} */}
-
                 {/* <OpenModalButton
                     className="update-post-button"
                     buttonText="Read all comments"
                     modalComponent={<PostComments post={post} />}
                 /> */}
-
-                {/* {comments.map((comment) => (
-                    <div>
-                        {comment.comment}
-                    </div>
-                ))} */}
             </div>
 
             {user && user.id === post.user_id ?
@@ -102,23 +90,8 @@ export const PostDetail = ({ post }) => {
                         modalComponent={<DeletePostModal post={post} />}
                     />
                 </div>
-            :
-            // <div>DEBUG Not your post!</div>
-            // Dirty delete ^^^ when done
-            <></>
+                : <></>
             }
-
-
-
-
-
-            {/* <div>
-                Post comments:
-                {comments.map(comment => (
-                    <div>{comment.comment}</div>
-                ))}
-            </div> */}
-            {/*******Prop thread post.id and throw in comment component******/}
         </div>
     )
 }
