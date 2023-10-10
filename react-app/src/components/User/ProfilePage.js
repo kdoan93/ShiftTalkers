@@ -8,7 +8,7 @@ import { thunkGetUser } from "../../store/session"
 import { PostComments } from "../Comment"
 
 
-export const ProfilePage = ({ user }) => {
+export const ProfilePage = () => {
     const history = useHistory()
     const { userId } = useParams()
     const dispatch = useDispatch()
@@ -17,7 +17,7 @@ export const ProfilePage = ({ user }) => {
     userPosts = Object.values(userPosts).reverse()
     // console.log("UserDetails userPosts: ", userPosts)
 
-    // const user = useSelector((state) => state.session.user)
+    const user = useSelector((state) => state.session.user)
     // console.log("UserDetail user: ", user)
 
     function lowBudgetDateConverter(date) {
@@ -32,9 +32,10 @@ export const ProfilePage = ({ user }) => {
         dispatch(thunkGetUserPosts(user.id))
         // dispatch(thunkGetUser(userId))
     // }, [dispatch, userPosts.length])
-    }, [dispatch, userPosts.length, userId])
+    }, [dispatch, userPosts.length, userId, user.id])
 
     if (!userPosts) return null
+    if (!user) return null
 
     return (
         <div className="user-detail-container">
