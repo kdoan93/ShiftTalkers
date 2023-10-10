@@ -21,7 +21,13 @@
     max-width: auto;
 }
 
-/* .user-sidebar div {
-    border: 1px solid red;
-    margin: 10px;
-} */
+.sidebar-navlink {
+    /* border: 1px solid red; */
+    font-weight: 700;
+}
+
+.create-post-modal {
+    /* border: 1px solid red; */
+    outline: inherit;
+    color: red;
+}

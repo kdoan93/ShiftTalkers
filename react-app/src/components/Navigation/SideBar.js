@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './SideBar.css';
 import { logout, thunkGetUser } from '../../store/session';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { CreatePostModal } from '../Post/CreatePost';
+import './SideBar.css';
 
 function SideBar({ isLoaded }){
     const dispatch = useDispatch()
@@ -32,21 +32,21 @@ function SideBar({ isLoaded }){
 
 	return (
 		<div className='sideBar'>
-			<div>
-				<NavLink exact to="/">Home</NavLink>
+			<div className='sidebar-navlink'>
+				<NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>Home</NavLink>
                 {/* Add garage logo as "Home" icon */}
 			</div>
 			{sessionUser ? (
 				<div className='user-sidebar'>
-					<div>
+					<div className="create-post-modal">
                         <OpenModalButton
                         className="create-post-modal"
                         buttonText="Create a Post"
                         modalComponent={<CreatePostModal />}
                         />
 					</div>
-					<div>
-						<NavLink exact to={`/users/current`}>Profile Page</NavLink>
+					<div className='sidebar-navlink'>
+						<NavLink exact to={`/users/current`} style={{ textDecoration: 'none', color: "black" }}>Profile Page</NavLink>
 					</div>
 					<div>
                         <p className='sidebar-logout sidebar-links' onClick={handleLogout}>Log Out</p>
