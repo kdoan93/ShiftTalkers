@@ -79,6 +79,7 @@ export const PostComments = ({ post }) => {
                     <div className="post-comment-single">
                         <NavLink exact to={`/users/${comment.user_id}`} >
                             <img className="post-comment-profile-pic" style={{ width: '50px', height: '50px', borderRadius: "50%" }} src={comment.profile_pic} />
+                            {comment.username}
                         </NavLink>
                         {comment.comment}
                     </div>
