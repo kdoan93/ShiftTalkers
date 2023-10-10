@@ -18,12 +18,12 @@ export const PostDetail = ({ post }) => {
 
     const user = useSelector((state) => state.session.user)
 
-    const allComments = useSelector((state) => state.comments.allComments)
-    const comments = Object.values(allComments)
-    console.log("PostDetail comments: ", comments)
+    // const allComments = useSelector((state) => state.comments.allComments)
+    // const comments = Object.values(allComments)
+    // console.log("PostDetail comments: ", comments)
     // console.log("PostDetail post: ", post)
 
-    const filterComments = comments.filter(comment => comment.post_id === post.id)
+    // const filterComments = comments.filter(comment => comment.post_id === post.id)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -76,11 +76,11 @@ export const PostDetail = ({ post }) => {
                     </div>
                 ))} */}
 
-                <OpenModalButton
+                {/* <OpenModalButton
                     className="update-post-button"
                     buttonText="Read all comments"
                     modalComponent={<PostComments post={post} />}
-                />
+                /> */}
 
                 {/* {comments.map((comment) => (
                     <div>
