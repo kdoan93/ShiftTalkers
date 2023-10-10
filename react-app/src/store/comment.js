@@ -137,7 +137,9 @@ const commentsReducer = (state = initialState, action) => {
             newState = { ...state, allComments: {} }
             action.comments.forEach((comment) => {
                 newState.allComments[comment.id] = comment
+                // console.log("store/comment comment: ", comment)
             })
+            // console.log("store/comment newState: ", newState)
             return newState
 
         case GET_COMMENT:

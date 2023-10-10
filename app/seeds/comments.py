@@ -110,7 +110,7 @@ def seed_comments():
     comment22 = Comment(
         post_id = 12,
         user_id = 1,
-        comment = "They're driving is proabably as bad as their parking"
+        comment = "Their driving is proabably as bad as their parking"
     )
     comment23 = Comment(
         post_id = 13,

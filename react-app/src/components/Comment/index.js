@@ -23,12 +23,14 @@ export const PostComments = ({ post }) => {
     // console.log("PostComments currentUser: ", currentUser)
 
     const allComments = useSelector((state) => state.comments.allComments)
-    const comments = Object.values(allComments)
+    const comments = Object.values(allComments).reverse()
     console.log("PostComments comments: ", comments)
+
+    const filterComments = comments.filter(comment => comment.post_id === post.id)
 
     useEffect(() => {
         dispatch(thunkGetPostComments(post.id))
-        // dispatch(thunkGetUser(post.user_id))
+        // dispatch(thunkGetComments())
     }, [dispatch, post.id, comments.length])
 
     const handleSubmit = async (e) => {
@@ -53,7 +55,29 @@ export const PostComments = ({ post }) => {
     return (
         <div className="post-comment-container">
             <h2>Post comment modal</h2>
+            {currentUser &&
             <div>
+                <h3>Leave a comment!</h3>
+                <form onSubmit={handleSubmit}>
+                    <textarea
+                        type="text"
+                        value={comment}
+                        onChange={e => setComment(e.target.value)}
+                        placeholder="Leave a comment"
+                        ></textarea>
+                    {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                    <button type="submit">Submit comment</button>
+                </form>
+            </div>
+            }
+
+            {filterComments.map((comment) => (
+                <div>
+                    {comment.comment}
+                </div>
+            ))}
+
+            {/* <div>
                 {comments.map((comment) => (
                     <div className="post-single-comment">
                         <div className="post-comment-profile-pic">
@@ -82,22 +106,7 @@ export const PostComments = ({ post }) => {
                         }
                     </div>
                 ))}
-            </div>
-            {currentUser &&
-            <div>
-                <h3>Leave a comment!</h3>
-                <form onSubmit={handleSubmit}>
-                    <textarea
-                        type="text"
-                        value={comment}
-                        onChange={e => setComment(e.target.value)}
-                        placeholder="Leave a comment"
-                        ></textarea>
-                    {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
-                    <button type="submit">Submit comment</button>
-                </form>
-            </div>
-            }
+            </div> */}
         </div>
     )
 }

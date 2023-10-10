@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
-import { thunkGetPostComments } from "../../store/comment";
+import { thunkGetComments, thunkGetPostComments } from "../../store/comment";
 import { UpdatePostModal } from "./UpdatePostModal";
 import { DeletePostModal } from "./DeletePostModal";
 import { PostComments } from "../Comment";
@@ -18,10 +18,12 @@ export const PostDetail = ({ post }) => {
 
     const user = useSelector((state) => state.session.user)
 
-    // const allComments = useSelector((state) => state.comments.allComments)
-    // const comments = Object.values(allComments)
-    // console.log("PostDetail comments: ", comments.length)
+    const allComments = useSelector((state) => state.comments.allComments)
+    const comments = Object.values(allComments)
+    console.log("PostDetail comments: ", comments)
     // console.log("PostDetail post: ", post)
+
+    const filterComments = comments.filter(comment => comment.post_id === post.id)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -37,7 +39,8 @@ export const PostDetail = ({ post }) => {
 
     useEffect(() => {
         // dispatch(thunkGetPostComments(post.id))
-    }, [dispatch])
+        // dispatch(thunkGetComments())
+    }, [dispatch, post.id])
 
     // if (!comments) return null
 
@@ -64,10 +67,18 @@ export const PostDetail = ({ post }) => {
             </div>
 
             <div>
-                {/* <PostComments post={post} /> */}
+
+                <PostComments post={post} />
+
+                {/* {filterComments.map((comment) => (
+                    <div>
+                        {comment.comment}
+                    </div>
+                ))} */}
+
                 <OpenModalButton
                     className="update-post-button"
-                    buttonText="Read comments"
+                    buttonText="Read all comments"
                     modalComponent={<PostComments post={post} />}
                 />
 
