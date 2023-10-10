@@ -51,14 +51,14 @@ export const PostComments = ({ post }) => {
     if (!comments) return null
 
     return (
-        <div>
+        <div className="post-comment-container">
             <h2>Post comment modal</h2>
             <div>
                 {comments.map((comment) => (
-                    <div className="post-comment-container">
+                    <div className="post-single-comment">
                         <div className="post-comment-profile-pic">
                             <NavLink exact to={`/users/${comment.user_id}`} >
-                                <img style={{ width: '300px'}} src={comment.profile_pic} />
+                                <img className="post-comment-profile-pic" style={{ width: '300px'}} src={comment.profile_pic} />
                             </NavLink>
                         </div>
 
