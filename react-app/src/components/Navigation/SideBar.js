@@ -40,7 +40,8 @@ function SideBar({ isLoaded }){
 				<div className='user-sidebar'>
 					<div className="create-post-modal">
                         <OpenModalButton
-                        className="create-post-modal"
+                        style={{ color: "red" }}
+                        className="create-post-button"
                         buttonText="Create a Post"
                         modalComponent={<CreatePostModal />}
                         />

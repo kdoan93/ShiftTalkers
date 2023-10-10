@@ -8,6 +8,10 @@
     padding: 20px 20px;
 }
 
+.sideBar div {
+    margin: 10px 0px;
+}
+
 .sidebar-logout {
     /* border: 1px solid red; */
     font-weight: 700;
@@ -26,8 +30,18 @@
     font-weight: 700;
 }
 
-.create-post-modal {
-    /* border: 1px solid red; */
+.create-post-modal button {
+    border: 1px solid red;
+    /* color: black; */
     outline: inherit;
-    color: red;
+    background-color: white;
+    border-color: white;
+    box-shadow: none;
+    padding: 0px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.create-post-modal button:hover {
+    cursor: pointer;
 }
