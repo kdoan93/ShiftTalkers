@@ -12,6 +12,11 @@
     margin: 10px 0px;
 }
 
+.sidebar-logout-container {
+    display: flex;
+    gap: 10px;
+}
+
 .sidebar-logout {
     /* border: 1px solid red; */
     font-weight: 700;
@@ -28,16 +33,18 @@
 .sidebar-navlink {
     /* border: 1px solid red; */
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .create-post-modal button {
-    border: 1px solid red;
-    /* color: black; */
-    outline: inherit;
-    background-color: white;
-    border-color: white;
+    background-color: black;
+    border-radius: 25px;
+    color: white;
     box-shadow: none;
-    padding: 0px;
+    padding: 15px;
+    width: 100%;
     font-weight: 700;
     font-size: 16px;
 }

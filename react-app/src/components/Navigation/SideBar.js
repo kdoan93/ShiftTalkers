@@ -33,24 +33,33 @@ function SideBar({ isLoaded }){
 	return (
 		<div className='sideBar'>
 			<div className='sidebar-navlink'>
+            <i class="fa-solid fa-house"></i>
 				<NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>Home</NavLink>
                 {/* Add garage logo as "Home" icon */}
 			</div>
 			{sessionUser ? (
 				<div className='user-sidebar'>
+					<div className='sidebar-navlink'>
+                        <i class="fa-solid fa-warehouse"></i>
+                        <div>
+						    <NavLink 
+                                exact to={`/users/current`} 
+                                style={{ textDecoration: 'none', color: "black" }}>
+                                    Profile Page
+                            </NavLink>
+                        </div>
+					</div>
+					<div className='sidebar-logout-container'>
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p className='sidebar-logout sidebar-links' onClick={handleLogout}>Log Out</p>
+					</div>
 					<div className="create-post-modal">
                         <OpenModalButton
                         style={{ color: "red" }}
                         className="create-post-button"
-                        buttonText="Create a Post"
+                        buttonText="+ Post"
                         modalComponent={<CreatePostModal />}
                         />
-					</div>
-					<div className='sidebar-navlink'>
-						<NavLink exact to={`/users/current`} style={{ textDecoration: 'none', color: "black" }}>Profile Page</NavLink>
-					</div>
-					<div>
-                        <p className='sidebar-logout sidebar-links' onClick={handleLogout}>Log Out</p>
 					</div>
 				</div>
 			) : (
