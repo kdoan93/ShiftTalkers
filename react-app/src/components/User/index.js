@@ -14,7 +14,7 @@ export const UserDetail = () => {
 
     let userPosts = useSelector((state) => state.posts.allPosts)
     userPosts = Object.values(userPosts).reverse()
-    // console.log("UserDetails userPosts: ", userPosts)
+    console.log("UserDetails userPosts: ", userPosts)
 
     const user = useSelector((state) => state.session.user)
     // console.log("UserDetail user: ", user)
@@ -29,29 +29,29 @@ export const UserDetail = () => {
 
     useEffect(() => {
         dispatch(thunkGetUserPosts(userId))
-        dispatch(thunkGetUser(userId))
+        // dispatch(thunkGetUser(userId))
     }, [dispatch, userPosts.length, userId])
 
     if (!userPosts) return null
-    if (!user) return null
+    // if (!user) return null
 
     return (
         <div className="user-detail-container">
             <div className="user-detail-upper">
-                {/* <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} /> */}
-                <img className="user-detail-profile-pic" src={user.profile_pic} />
+                <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} />
+                {/* <img className="user-detail-profile-pic" src={user.profile_pic} /> */}
                 <div className="user-detail-user-info">
                     <p className="user-detail-name">
-                        {/* {userPosts[0].first_name} {userPosts[0].last_name} */}
-                        {user.first_name} {user.last_name}
+                        {userPosts[0].first_name} {userPosts[0].last_name}
+                        {/* {user.first_name} {user.last_name} */}
                     </p>
                     <p className="user-detail-bottom">
-                        {/* {userPosts[0].username} */}
-                        {user.username}
+                        {userPosts[0].username}
+                        {/* {user.username} */}
                     </p>
                     <p className="user-detail-bottom">
-                        {/* Joined: {lowBudgetDateConverter(userPosts[0].created_at)} */}
-                        Joined: {lowBudgetDateConverter(user.created_at)}
+                        Joined: {lowBudgetDateConverter(userPosts[0].created_at)}
+                        {/* Joined: {lowBudgetDateConverter(user.created_at)} */}
                     </p>
                 </div>
             </div>
