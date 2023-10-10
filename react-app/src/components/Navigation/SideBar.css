@@ -9,20 +9,26 @@
 }
 
 .sideBar div {
-    margin: 10px 0px;
+    margin: 13px 0px;
 }
 
-.sidebar-logout-container {
-    display: flex;
-    gap: 10px;
+.sidebar-navlink i {
+    /* border: 1px solid red; */
+    font-weight: 700;
+    margin-right: 10px;
 }
 
 .sidebar-logout {
     /* border: 1px solid red; */
+    display: flex;
     font-weight: 700;
-    width: 65px;
+    /* width: 65px; */
     text-align: center;
-    margin: 0px;
+    margin-bottom: 25px;
+}
+
+.sidebar-logout i {
+    margin: 0px 12px 0px 3px;
 }
 
 .sidebar-links:hover {
@@ -35,7 +41,6 @@
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .create-post-modal button {
