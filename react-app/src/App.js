@@ -46,7 +46,7 @@ function App() {
             <UserDetail />
           </Route>
           <Route>
-            <img style={{ width: '80%', height: '100%', marginLeft: "25%", cursor: "pointer" }}
+            <img style={{ width: '80%', height: '100%', marginLeft: "25%", cursor: "pointer", marginTop: "100px" }}
               src="https://cdn.mos.cms.futurecdn.net/PuXipAW3AXUzUJ4uYyxPKC-1200-80.jpg" alt="404"
               onClick={onClick}
             />

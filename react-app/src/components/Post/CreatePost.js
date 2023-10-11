@@ -74,7 +74,7 @@ export const CreatePostModal = () => {
             <h2>Create a Post</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Media</label>
+                    {/* <label>Media</label> */}
                     <input
                         type="url"
                         value={media}
