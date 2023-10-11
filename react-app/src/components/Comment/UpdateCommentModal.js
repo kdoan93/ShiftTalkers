@@ -7,6 +7,7 @@ import * as commentsActions from "../../store/comment"
 export const UpdateCommentModal = ({ comment }) => {
     const [updateComment, setUpdateComment] = useState(comment.comment)
     const [errors, setErrors] = useState({})
+    const [submitted, setSubmitted] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -20,11 +21,13 @@ export const UpdateCommentModal = ({ comment }) => {
 
         try {
             await dispatch( commentsActions.thunkUpdateComment( {comment: updateComment}, comment.id) )
+            setSubmitted(true)
             closeModal()
         } catch (error) {
             if (error) {
                 const data = await error.json()
                 setErrors(data.errors)
+                setSubmitted(true)
                 return data
             }
         }
@@ -34,6 +37,7 @@ export const UpdateCommentModal = ({ comment }) => {
         // const errors = {}
         // if (!updateComment) errors.updateComment = "Comment must have at least one character!"
         // setErrors(errors)
+        setSubmitted(false)
         dispatch(commentsActions.thunkGetComment(comment.id))
     }, [dispatch, updateComment])
 
@@ -47,7 +51,7 @@ export const UpdateCommentModal = ({ comment }) => {
                     onChange={e => setUpdateComment(e.target.value)}
                     placeholder="Update your comment?"
                 ></textarea>
-                {errors && <div className="bottom-error">Comment needs at least one character</div>}
+                {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
                 <button type="submit">Update Comment</button>
             </form>
         </div>
