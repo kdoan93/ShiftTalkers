@@ -72,14 +72,18 @@ export const PostComments = ({ post }) => {
                 </div>
             }
 
-            {filterComments.map((comment) => (
+            {filterComments && filterComments.map((comment) => (
                 <div>
-                    <div className="post-comment-single">
-                        <NavLink exact to={`/users/${comment.user_id}`} >
+                    <div className="post-comment-single" key={comment.id}>
+                        <NavLink className="comment-user-pic" exact to={`/users/${comment.user_id}`} >
                             <img className="post-comment-profile-pic" style={{ width: '50px', height: '50px', borderRadius: "50%" }} src={comment.profile_pic} />
-                            {comment.username}
                         </NavLink>
-                        {comment.comment}
+                        <div className="post-comment-comment-container">
+                            <NavLink className="comment-user" exact to={`/users/${comment.user_id}`} >
+                                {comment.username}
+                            </NavLink>
+                            {comment.comment}
+                        </div>
                     </div>
                     {currentUser && comment.user_id === currentUser.id ?
                             <div>
@@ -100,6 +104,22 @@ export const PostComments = ({ post }) => {
                         }
                 </div>
             ))}
+
+            {/* {currentUser &&
+                <div>
+                    <h3>Leave a comment!</h3>
+                    <form onSubmit={handleSubmit}>
+                        <textarea
+                            type="text"
+                            value={comment}
+                            onChange={e => setComment(e.target.value)}
+                            placeholder="Leave a comment!"
+                            ></textarea>
+                        <button type="submit">Submit Comment</button>
+                        {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                    </form>
+                </div>
+            } */}
 
             {/* <div>
                 {comments.map((comment) => (

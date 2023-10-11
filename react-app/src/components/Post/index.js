@@ -1,23 +1,26 @@
 // Index.js for post detail
 import { useHistory, useParams } from "react-router-dom/";
-import "./Post.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
-import { thunkGetComments, thunkGetPostComments } from "../../store/comment";
+import { thunkCreateComment, thunkGetComments, thunkGetPostComments } from "../../store/comment";
 import { UpdatePostModal } from "./UpdatePostModal";
 import { DeletePostModal } from "./DeletePostModal";
 import { PostComments } from "../Comment";
 import { thunkGetPostInfo } from "../../store/post";
+import "./Post.css"
 
 export const PostDetail = ({ post }) => {
+    const [comment, setComment] = useState("")
+    const [errors, setErrors] = useState({})
+    const [submitted, setSubmitted] = useState(false)
 
     const history = useHistory()
     const dispatch = useDispatch()
     const { postId } = useParams()
 
-    const user = useSelector((state) => state.session.user)
+    const currentUser = useSelector((state) => state.session.user)
 
     // const allComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(allComments)
@@ -41,8 +44,28 @@ export const PostDetail = ({ post }) => {
     useEffect(() => {
         // dispatch(thunkGetPostComments(post.id))
         // dispatch(thunkGetComments())
+        setSubmitted(false)
         dispatch(thunkGetPostInfo(post.id))
-    }, [dispatch, post.id, post])
+    }, [dispatch, post.id, post, comment, submitted])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setErrors({})
+
+        try {
+            await dispatch(thunkCreateComment({ comment }, post.id)
+            )
+            setSubmitted(true)
+            // closeModal()
+        } catch (errors) {
+            if (errors) {
+                setErrors(errors)
+                setSubmitted(true)
+                // console.log("PostComments errors: ", errors.ok)
+            }
+        }
+        // setSubmitted(false)
+    }
 
     // if (!comments) return null
 
@@ -60,6 +83,21 @@ export const PostDetail = ({ post }) => {
                         {lowBudgetDateConverter(post.created_at)}
                     </p>
                 </div>
+                {currentUser && currentUser.id === post.user_id ?
+                    <div className="post-user-buttons">
+                        <OpenModalButton
+                            className="update-post-button"
+                            buttonText="Update"
+                            modalComponent={<UpdatePostModal post={post} />}
+                        />
+                        <OpenModalButton
+                            className="delete-post-button"
+                            buttonText="Delete"
+                            modalComponent={<DeletePostModal post={post} />}
+                        />
+                    </div>
+                    : <></>
+                }
             </div>
             <div className="post-body">
                 {post.body}
@@ -76,21 +114,20 @@ export const PostDetail = ({ post }) => {
                     modalComponent={<PostComments post={post} />}
                 /> */}
             </div>
-
-            {user && user.id === post.user_id ?
+            {currentUser &&
                 <div>
-                    <OpenModalButton
-                        className="update-post-button"
-                        buttonText="Update"
-                        modalComponent={<UpdatePostModal post={post} />}
-                    />
-                    <OpenModalButton
-                        className="delete-post-button"
-                        buttonText="Delete"
-                        modalComponent={<DeletePostModal post={post} />}
-                    />
+                    {/* <h3>Leave a comment!</h3> */}
+                    <form onSubmit={handleSubmit}>
+                        <textarea
+                            type="text"
+                            value={comment}
+                            onChange={e => setComment(e.target.value)}
+                            placeholder="Leave a comment!"
+                            ></textarea>
+                        <button type="submit">Submit Comment</button>
+                        {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                    </form>
                 </div>
-                : <></>
             }
         </div>
     )
