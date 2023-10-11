@@ -1,13 +1,13 @@
 .post-details-container {
     border: 2px solid black;
     margin: 20px 10px;
-    padding: 15px;
+    /* padding: 15px; */
     /* margin-top: 100px; */
 }
 
-.post-details-container div {
+/* .post-details-container div {
     margin: 10px;
-}
+} */
 
 .post-profile-pic {
     border: 1px solid black;
@@ -18,7 +18,7 @@
 
 .post-user-date p {
     /* border: 1px solid red; */
-    margin: 0px;
+    margin: 5px;
     display: flex;
     align-items: center;
 }
@@ -29,6 +29,28 @@
     font-weight: 700;
 }
 
+.post-user-buttons {
+    border: 1px solid white;
+    display: grid;
+    gap: 5px;
+    height: 32px;
+}
+
+.post-user-buttons button {
+    /* border: 1px solid red; */
+    border: transparent;
+    color: gray;
+    background-color: transparent;
+    padding: 0px;
+    margin-top: 10px;
+    height: 16px;
+}
+
+.post-user-buttons button:hover {
+    cursor: pointer;
+    color: red;
+}
+
 .post-created {
     font-size: 12px;
 }
@@ -36,14 +58,32 @@
 .post-upper-details {
     /* border: 1px solid red; */
     display: flex;
+    justify-content: space-between;
+    margin: 20px;
 }
 
-.post-body {
-    /* border: 1px solid blue; */
-    font-weight: 500;
+.post-user-details {
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+/* .post-body {
+    border: 1px solid blue;
+    margin: 0px 0px 20px 20px;
+    margin-left: 10%;
+} */
 
 .post-pics {
     /* border: 1px solid green; */
-    text-align: center;
+    /* text-align: center; */
+    display: grid;
+    margin-left: 20%;
+    gap: 15px;
+}
+
+.post-postComments {
+    /* border: 1px solid red; */
+    margin: 20px;
 }

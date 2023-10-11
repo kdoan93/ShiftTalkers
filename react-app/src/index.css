@@ -3,3 +3,10 @@ body {
     /* border: 1px solid red; */
     font-family: 'Wix Madefor Display', sans-serif;
 }
+
+.bottom-error {
+    /* border: 1px solid red; */
+    color: red;
+    font-weight: 700;
+    margin: 10px 0px;
+}

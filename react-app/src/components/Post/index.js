@@ -49,26 +49,43 @@ export const PostDetail = ({ post }) => {
     return (
         <div className="post-details-container">
             <div className="post-upper-details">
-                <NavLink exact to={`/users/${post.user_id}`}>
-                    <img className="post-profile-pic" width="100px" src={post.profile_pic} />
-                </NavLink>
-                <div className="post-user-date">
-                    <p className="post-username">
-                        {post.username}
-                    </p>
-                    <p className="post-created">
-                        {lowBudgetDateConverter(post.created_at)}
-                    </p>
+                <div className="post-user-details">
+                    <NavLink exact to={`/users/${post.user_id}`}>
+                        <img className="post-profile-pic" width="100px" src={post.profile_pic} />
+                    </NavLink>
+                    <div className="post-user-date">
+                        <p className="post-username">
+                            {post.username}
+                        </p>
+                        <p className="post-created">
+                            {lowBudgetDateConverter(post.created_at)}
+                        </p>
+                    </div>
                 </div>
+                {user && user.id === post.user_id ?
+                    <div className="post-user-buttons">
+                        <OpenModalButton
+                            className="update-post-button"
+                            buttonText="Update"
+                            modalComponent={<UpdatePostModal post={post} />}
+                        />
+                        <OpenModalButton
+                            className="delete-post-button"
+                            buttonText="Delete"
+                            modalComponent={<DeletePostModal post={post} />}
+                        />
+                    </div>
+                    : <></>
+                }
             </div>
-            <div className="post-body">
-                {post.body}
-            </div>
+            {/* <div className="post-body">
+            </div> */}
             <div className="post-pics">
-                <img width="500px" src={post.media} />
+                {post.body}
+                <img width="75%" src={post.media} />
             </div>
 
-            <div>
+            <div className="post-postComments">
                 <PostComments post={post} />
                 {/* <OpenModalButton
                     className="update-post-button"
@@ -76,22 +93,6 @@ export const PostDetail = ({ post }) => {
                     modalComponent={<PostComments post={post} />}
                 /> */}
             </div>
-
-            {user && user.id === post.user_id ?
-                <div>
-                    <OpenModalButton
-                        className="update-post-button"
-                        buttonText="Update"
-                        modalComponent={<UpdatePostModal post={post} />}
-                    />
-                    <OpenModalButton
-                        className="delete-post-button"
-                        buttonText="Delete"
-                        modalComponent={<DeletePostModal post={post} />}
-                    />
-                </div>
-                : <></>
-            }
         </div>
     )
 }

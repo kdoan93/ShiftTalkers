@@ -56,25 +56,10 @@ export const PostComments = ({ post }) => {
     return (
         <div className="post-comment-container">
             {/* <h2>Post comment modal</h2> */}
-            {currentUser &&
-                <div>
-                    <h3>Leave a comment!</h3>
-                    <form onSubmit={handleSubmit}>
-                        <textarea
-                            type="text"
-                            value={comment}
-                            onChange={e => setComment(e.target.value)}
-                            placeholder="Leave a comment"
-                            ></textarea>
-                        <button type="submit">Submit comment</button>
-                        {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
-                    </form>
-                </div>
-            }
 
             {filterComments.map((comment) => (
                 <div>
-                    <div className="post-comment-single">
+                    <div className="post-comment-single" key={comment.id}>
                         <NavLink exact to={`/users/${comment.user_id}`} >
                             <img className="post-comment-profile-pic" style={{ width: '50px', height: '50px', borderRadius: "50%" }} src={comment.profile_pic} />
                             {comment.username}
@@ -87,12 +72,12 @@ export const PostComments = ({ post }) => {
                                     className="update-comment-button"
                                     buttonText="Update"
                                     modalComponent={<UpdateCommentModal comment={comment} />}
-                                />
+                                    />
                                 <OpenModalButton
                                     className="delete-comment-button"
                                     buttonText="Delete"
                                     modalComponent={<DeleteCommentModal comment={comment} postId={post.id} />}
-                                />
+                                    />
 
                             </div>
                             :
@@ -100,6 +85,22 @@ export const PostComments = ({ post }) => {
                         }
                 </div>
             ))}
+            
+            {currentUser &&
+                <div>
+                    {/* <h3>Leave a comment!</h3> */}
+                    <form onSubmit={handleSubmit}>
+                        <textarea
+                            type="text"
+                            value={comment}
+                            onChange={e => setComment(e.target.value)}
+                            placeholder="Leave a comment!"
+                            ></textarea>
+                        <button type="submit">Submit Comment</button>
+                        {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                    </form>
+                </div>
+            }
 
             {/* <div>
                 {comments.map((comment) => (

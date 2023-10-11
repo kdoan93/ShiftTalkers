@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as postsActions from "../../store/post"
+import "./Post.css"
 
 
 export const CreatePostModal = () => {
@@ -35,10 +36,10 @@ export const CreatePostModal = () => {
             media.endsWith("png") ? setGoodImg(true) : setGoodImg(false) &&
             media.endsWith("gif") ? setGoodImg(true) : setGoodImg(false)
         }
+        goodImg ? console.log("goodImg") : console.log("not goodImg")
+        // if (goodImg) console.log("goodImg HIT")
 
-        if (goodImg) console.log("goodImg HIT")
-
-    }, [dispatch, media, body])
+    }, [dispatch, media, body, media.length])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -74,7 +75,7 @@ export const CreatePostModal = () => {
             <h2>Create a Post</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Media</label>
+                    {/* <label>Media</label> */}
                     <input
                         type="url"
                         value={media}
@@ -96,7 +97,7 @@ export const CreatePostModal = () => {
                     placeholder="Leave a message ShiftTalker"
                 ></textarea>
                 {errors.body && <p>Message must have at least one character</p>}
-                <button type="submit">Create Post</button>
+                <button type="submit">Post</button>
             </form>
         </div>
     )
