@@ -1,9 +1,71 @@
-.post-comment-single {
-    margin: 0px;
-}.post-comment-container {
+.post-comment-container {
     /* border: 1px solid red; */
-    /* max-height: 25%; */
+    margin: 20px;
     min-height: 100px;
-    max-height: 300px;
+    max-height: 200px;
     overflow-y: scroll;
+}
+
+.post-comment-single-container {
+    /* border: 1px solid yellow; */
+    border-bottom: 1px solid gray;
+    margin: 10px 10px 10px 0px;
+    display: flex;
+    gap: 10px;
+}
+
+.post-comment-comment-container {
+    /* border: 1px solid green; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    gap: 5px;
+    margin: 5px 0px;
+}
+
+.post-circle {
+    /* border: 1px solid black; */
+    font-size: 4px;
+}
+
+.post-comment-user {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-comment-user a {
+    /* border: 1px solid red; */
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+.post-comment-date {
+    font-size: 11px;
+
+}
+
+.post-comment-pic-container {
+    /* border: 1px solid red; */
+    margin: 5px 0px;
+    width: 50px;
+}
+
+.post-comment-buttons button {
+    /* border: 1px solid red; */
+    border: transparent;
+    color: gray;
+    background-color: transparent;
+    padding: 0px;
+    margin-top: 10px;
+    height: 16px;
+    display: flex;
+}
+
+.post-comment-buttons button:hover {
+    cursor: pointer;
+    color: red;
 }

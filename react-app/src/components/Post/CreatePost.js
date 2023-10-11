@@ -10,14 +10,10 @@ export const CreatePostModal = () => {
     const [body, setBody] = useState("")
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState({})
-    const [goodImg, setGoodImg] = useState(true)
 
     const dispatch = useDispatch()
 
     const { closeModal } = useModal()
-
-
-    // console.log("CreatePost media: ", media)
 
     useEffect(() => {
         const errors = {}
@@ -55,7 +51,6 @@ export const CreatePostModal = () => {
             <h2>Create a Post</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    {/* <label>Media</label> */}
                     <input
                         type="url"
                         value={media}
@@ -63,13 +58,6 @@ export const CreatePostModal = () => {
                         placeholder="Add a pic with your post!"
                     />
                 </div>
-                {/* <input
-                    type="url"
-                    value={media}
-                    onChange={(e) => setMedia(e.target.value)}
-                    placeholder="Post a pic with your post!"
-                /> */}
-                {/* {submitted && !goodImg && <p>Media must end with .png, .jpg, or .jpeg</p>} */}
                 {errors.media && submitted && <p>{errors.media}</p>}
                 <textarea
                     type="text"
