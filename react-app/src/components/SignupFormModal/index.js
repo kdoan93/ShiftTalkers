@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../store/session";
 import { useModal } from "../../context/Modal";
@@ -21,12 +21,19 @@ function SignupFormModal() {
 
 	if (sessionUser) return <Redirect to="/" />;
 
+	// useEffect(() => {
+	// 	const errors = {};
+
+	// 	if (email)
+	// })
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, first_name, last_name, profile_pic, password));
 			closeModal()
 			if (data) {
+				console.log("SignupFormModal data: ", data)
 			setErrors(data)
 			}
 		} else {

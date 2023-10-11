@@ -1,23 +1,26 @@
 // Index.js for post detail
 import { useHistory, useParams } from "react-router-dom/";
-import "./Post.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
-import { thunkGetComments, thunkGetPostComments } from "../../store/comment";
+import { thunkCreateComment, thunkGetComments, thunkGetPostComments } from "../../store/comment";
 import { UpdatePostModal } from "./UpdatePostModal";
 import { DeletePostModal } from "./DeletePostModal";
 import { PostComments } from "../Comment";
 import { thunkGetPostInfo } from "../../store/post";
+import "./Post.css"
 
 export const PostDetail = ({ post }) => {
+    const [comment, setComment] = useState("")
+    const [errors, setErrors] = useState({})
+    const [submitted, setSubmitted] = useState(false)
 
     const history = useHistory()
     const dispatch = useDispatch()
     const { postId } = useParams()
 
-    const user = useSelector((state) => state.session.user)
+    const currentUser = useSelector((state) => state.session.user)
 
     // const allComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(allComments)
@@ -41,28 +44,47 @@ export const PostDetail = ({ post }) => {
     useEffect(() => {
         // dispatch(thunkGetPostComments(post.id))
         // dispatch(thunkGetComments())
+        setSubmitted(false)
         dispatch(thunkGetPostInfo(post.id))
-    }, [dispatch, post.id, post])
+    }, [dispatch, comment])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setErrors({})
+
+        try {
+            await dispatch(thunkCreateComment({ comment }, post.id)
+            )
+            setSubmitted(true)
+            setComment("")
+            // closeModal()
+        } catch (errors) {
+            if (errors) {
+                setErrors(errors)
+                setSubmitted(true)
+                // console.log("PostComments errors: ", errors.ok)
+            }
+        }
+        // setSubmitted(false)
+    }
 
     // if (!comments) return null
 
     return (
         <div className="post-details-container">
             <div className="post-upper-details">
-                <div className="post-user-details">
-                    <NavLink exact to={`/users/${post.user_id}`}>
-                        <img className="post-profile-pic" width="100px" src={post.profile_pic} />
-                    </NavLink>
-                    <div className="post-user-date">
-                        <p className="post-username">
-                            {post.username}
-                        </p>
-                        <p className="post-created">
-                            {lowBudgetDateConverter(post.created_at)}
-                        </p>
-                    </div>
+                <NavLink exact to={`/users/${post.user_id}`}>
+                    <img className="post-profile-pic" width="100px" src={post.profile_pic} />
+                </NavLink>
+                <div className="post-user-date">
+                    <p className="post-username">
+                        {post.username}
+                    </p>
+                    <p className="post-created">
+                        {lowBudgetDateConverter(post.created_at)}
+                    </p>
                 </div>
-                {user && user.id === post.user_id ?
+                {currentUser && currentUser.id === post.user_id ?
                     <div className="post-user-buttons">
                         <OpenModalButton
                             className="update-post-button"
@@ -78,14 +100,14 @@ export const PostDetail = ({ post }) => {
                     : <></>
                 }
             </div>
-            {/* <div className="post-body">
-            </div> */}
-            <div className="post-pics">
+            <div className="post-body">
                 {post.body}
-                <img width="75%" src={post.media} />
+            </div>
+            <div className="post-pics">
+                <img width="500px" src={post.media} />
             </div>
 
-            <div className="post-postComments">
+            <div>
                 <PostComments post={post} />
                 {/* <OpenModalButton
                     className="update-post-button"
@@ -93,6 +115,21 @@ export const PostDetail = ({ post }) => {
                     modalComponent={<PostComments post={post} />}
                 /> */}
             </div>
+            {currentUser &&
+                <div>
+                    {/* <h3>Leave a comment!</h3> */}
+                    <form onSubmit={handleSubmit}>
+                        <textarea
+                            type="text"
+                            value={comment}
+                            onChange={e => setComment(e.target.value)}
+                            placeholder="Leave a comment!"
+                            ></textarea>
+                        <button type="submit">Submit Comment</button>
+                        {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                    </form>
+                </div>
+            }
         </div>
     )
 }

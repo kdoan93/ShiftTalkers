@@ -55,9 +55,9 @@ export const ProfilePage = () => {
                     </p>
                 </div>
             </div>
-            {filterPosts.length ? filterPosts.map((post) => (
+            {filterPosts[0] ? userPosts.map((post) => (
                 <PostDetail post={post} />
-            )) : <h2>User has no post yet!</h2>}
+            )) : <h2>{user.username} has no post yet, make a post ShiftTalker!</h2>}
         </div>
     )
 }

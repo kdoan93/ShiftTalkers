@@ -1,4 +1,6 @@
-.post-comment-container {
+.post-comment-single {
+    margin: 0px;
+}.post-comment-container {
     /* border: 1px solid red; */
     /* max-height: 25%; */
     min-height: 100px;
