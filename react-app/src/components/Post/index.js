@@ -46,7 +46,7 @@ export const PostDetail = ({ post }) => {
         // dispatch(thunkGetComments())
         setSubmitted(false)
         dispatch(thunkGetPostInfo(post.id))
-    }, [dispatch, post.id, post, comment, submitted])
+    }, [dispatch, comment])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -56,6 +56,7 @@ export const PostDetail = ({ post }) => {
             await dispatch(thunkCreateComment({ comment }, post.id)
             )
             setSubmitted(true)
+            setComment("")
             // closeModal()
         } catch (errors) {
             if (errors) {

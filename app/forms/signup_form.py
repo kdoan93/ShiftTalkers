@@ -32,4 +32,4 @@ class SignUpForm(FlaskForm):
     first_name = StringField('first_name', validators=[DataRequired(), Length(min=1, message="First name must have at least 1 character")])
     last_name = StringField('last_name', validators=[DataRequired(), Length(min=1, message="Last name must have at least 1 character")])
     profile_pic = URLField('profile_pic', validators=[DataRequired(), url_validator])
-    password = StringField('password', validators=[DataRequired()])
+    password = StringField('password', validators=[DataRequired(), Length(min=8, message="Password must have at least 8 characters")])

@@ -28,15 +28,15 @@ export const CreatePostModal = () => {
         // ) errors.media = "Image URL must end in .png, .jpg, or .jpeg";
         //     setErrors(errors)
 
-        if (media) {
-            // console.log("CreatePost media: ", media)
-            media.endsWith("jpg") ? setGoodImg(true) : setGoodImg(false) &&
-            media.endsWith("jpeg") ? setGoodImg(true) : setGoodImg(false) &&
-            media.endsWith("png") ? setGoodImg(true) : setGoodImg(false) &&
-            media.endsWith("gif") ? setGoodImg(true) : setGoodImg(false)
-        }
+        // if (media) {
+        //     // console.log("CreatePost media: ", media)
+        //     media.endsWith("jpg") ? setGoodImg(true) : setGoodImg(false) &&
+        //     media.endsWith("jpeg") ? setGoodImg(true) : setGoodImg(false) &&
+        //     media.endsWith("png") ? setGoodImg(true) : setGoodImg(false) &&
+        //     media.endsWith("gif") ? setGoodImg(true) : setGoodImg(false)
+        // }
 
-        if (goodImg) console.log("goodImg HIT")
+        // if (goodImg) console.log("goodImg HIT")
 
     }, [dispatch, media, body])
 
@@ -47,13 +47,13 @@ export const CreatePostModal = () => {
 
         if (!body) errors.body = "Body needs at least one character"
 
-    //     if (media) {
-    //         console.log("CreatePost media: ", media)
-    //         media.endsWith("jpg") ? setGoodImg(true) : setGoodImg(false) &&
-    //         media.endsWith("jpeg") ? setGoodImg(true) : setGoodImg(false) &&
-    //         media.endsWith("png") ? setGoodImg(true) : setGoodImg(false) &&
-    //         media.endsWith("gif") ? setGoodImg(true) : setGoodImg(false)
-    //  } errors.media = "Image URL must end in .png, .jpg, .jpeg, or .gif";
+        if (media) {
+            console.log("CreatePost media: ", media)
+            media.endsWith("jpg") ? setGoodImg(true) : setGoodImg(false) &&
+            media.endsWith("jpeg") ? setGoodImg(true) : setGoodImg(false) &&
+            media.endsWith("png") ? setGoodImg(true) : setGoodImg(false) &&
+            media.endsWith("gif") ? setGoodImg(true) : setGoodImg(false)
+        } errors.media = "Image URL must end in .png, .jpg, .jpeg, or .gif";
 
         try {
             if (goodImg) {
@@ -88,7 +88,8 @@ export const CreatePostModal = () => {
                     onChange={(e) => setMedia(e.target.value)}
                     placeholder="Post a pic with your post!"
                 /> */}
-                {submitted && !goodImg && <p>Media must end with .png, .jpg, or .jpeg</p>}
+                {/* {submitted && !goodImg && <p>Media must end with .png, .jpg, or .jpeg</p>} */}
+                {errors.media && <p>Media must end with .png, .jpg, or .jpeg</p>}
                 <textarea
                     type="text"
                     value={body}

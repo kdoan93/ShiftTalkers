@@ -17,8 +17,8 @@ export const ProfilePage = () => {
     const user = useSelector((state) => state.session.user)
     // console.log("UserDetail user: ", user)
 
-    const filterPosts = userPosts.map(post => post.user_id === user.id)
-    console.log("ProfilePage filterPosts: ", filterPosts)
+    // const filterPosts = userPosts.map(post => post.user_id === user.id)
+    // console.log("ProfilePage filterPosts: ", filterPosts)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -55,7 +55,7 @@ export const ProfilePage = () => {
                     </p>
                 </div>
             </div>
-            {filterPosts.length ? filterPosts.map((post) => (
+            {userPosts.length ? userPosts.map((post) => (
                 <PostDetail post={post} />
             )) : <h2>User has no post yet!</h2>}
         </div>

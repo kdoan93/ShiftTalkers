@@ -56,7 +56,7 @@ export const PostComments = ({ post }) => {
     return (
         <div className="post-comment-container">
             {/* <h2>Post comment modal</h2> */}
-            {currentUser &&
+            {/* {currentUser &&
                 <div>
                     <h3>Leave a comment!</h3>
                     <form onSubmit={handleSubmit}>
@@ -70,7 +70,7 @@ export const PostComments = ({ post }) => {
                         {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
                     </form>
                 </div>
-            }
+            } */}
 
             {filterComments && filterComments.map((comment) => (
                 <div>
