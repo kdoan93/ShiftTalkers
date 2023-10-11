@@ -20,53 +20,33 @@ export const CreatePostModal = () => {
     // console.log("CreatePost media: ", media)
 
     useEffect(() => {
-        // const errors = {}
-        // if (
-        //     media &&
-        //     !media.endsWith("jpg") &&
-        //     !media.endsWith("jpeg") &&
-        //     !media.endsWith("png")
-        // ) errors.media = "Image URL must end in .png, .jpg, or .jpeg";
-        //     setErrors(errors)
+        const errors = {}
+        if (
+            media &&
+            !media.includes(".jpg") &&
+            !media.includes(".jpeg") &&
+            !media.includes(".png")
+        ) errors.media = "Image URL must end in .png, .jpg, or .jpeg";
+        setErrors(errors)
 
-        // if (media) {
-        //     // console.log("CreatePost media: ", media)
-        //     media.endsWith("jpg") ? setGoodImg(true) : setGoodImg(false) &&
-        //     media.endsWith("jpeg") ? setGoodImg(true) : setGoodImg(false) &&
-        //     media.endsWith("png") ? setGoodImg(true) : setGoodImg(false) &&
-        //     media.endsWith("gif") ? setGoodImg(true) : setGoodImg(false)
-        // }
+        if (!body) errors.body = "Post needs at least one character"
 
-        if (goodImg) console.log("goodImg HIT")
+        if (errors) console.log("CreatePostModal errors: ", errors)
 
-    }, [dispatch, media, body])
+    }, [dispatch, media.length, body])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors({})
-        setSubmitted(true)
+        if (!Object.values(errors).length) {
+            await dispatch( postsActions.thunkCreatePost({ media, body }) )
+            setSubmitted(true)
+            closeModal()
+        }
 
-        if (!body) errors.body = "Body needs at least one character"
-
-        if (media) {
-            console.log("CreatePost media: ", media)
-            media.endsWith("jpg") ? setGoodImg(true) : setGoodImg(false) &&
-            media.endsWith("jpeg") ? setGoodImg(true) : setGoodImg(false) &&
-            media.endsWith("png") ? setGoodImg(true) : setGoodImg(false) &&
-            media.endsWith("gif") ? setGoodImg(true) : setGoodImg(false)
-        } errors.media = "Image URL must end in .png, .jpg, .jpeg, or .gif";
-
-        try {
-            if (goodImg) {
-                await dispatch( postsActions.thunkCreatePost({ media, body }) )
-                // setSubmitted(true)
-                closeModal()
-            }
-        } catch (errors) {
-            if (errors) {
-                setErrors(errors)
-                setSubmitted(true)
-            }
+        if (errors) {
+            setErrors(errors)
+            setSubmitted(true)
         }
     }
 
@@ -90,14 +70,14 @@ export const CreatePostModal = () => {
                     placeholder="Post a pic with your post!"
                 /> */}
                 {/* {submitted && !goodImg && <p>Media must end with .png, .jpg, or .jpeg</p>} */}
-                {errors.media && <p>Media must end with .png, .jpg, or .jpeg</p>}
+                {errors.media && submitted && <p>{errors.media}</p>}
                 <textarea
                     type="text"
                     value={body}
                     onChange={e => setBody(e.target.value)}
                     placeholder="Leave a message ShiftTalker"
                 ></textarea>
-                {errors.body && <p>Message must have at least one character</p>}
+                {errors.body && submitted && <p>{errors.body}</p>}
                 <button type="submit">Post</button>
             </form>
         </div>
