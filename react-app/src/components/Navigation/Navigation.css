@@ -8,7 +8,7 @@
 
 .nav-bar {
   border-bottom: 2px solid black;
-  background-color: transparent;
+  background-color: snow;
   position: fixed;
   top: 0px;
   display: flex;

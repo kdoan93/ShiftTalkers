@@ -21,7 +21,7 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background-color: snow;
   border: 3px solid black;
   border-radius: 5px;
   /* position: fixed;

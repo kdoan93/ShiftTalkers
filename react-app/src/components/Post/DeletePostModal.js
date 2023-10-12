@@ -20,14 +20,14 @@ export const DeletePostModal = ({ post }) => {
     }, [dispatch])
 
     return (
-        <div className="deleteModal">
+        <div className="post-modal-form">
             <div className="deleteTitle">
-                <h2 className="confirmDeleteTitle">Confirm Delete</h2>
+                <h2 className="post-modal-title">Confirm Delete</h2>
                 <p className="deleteParagraph">Are you sure you want to delete this post?</p>
             </div>
             <div className="deleteButtons">
-                <button className="b yesButton" onClick={handleClick}> Yes (Delete Post) </button>
-                <button className="b noButton" onClick={closeModal}> No (Keep Post) </button>
+                <button className="post-modal-button" onClick={handleClick}> Yes (Delete Post) </button>
+                <button className="post-modal-button" onClick={closeModal}> No (Keep Post) </button>
             </div>
         </div>
     )

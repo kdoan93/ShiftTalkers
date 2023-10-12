@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as postsActions from "../../store/post"
-import "./Post.css"
+import "./PostModal.css"
 
 
 export const CreatePostModal = () => {
@@ -48,25 +48,25 @@ export const CreatePostModal = () => {
 
     return (
         <div className="create-post-container">
-            <h2>Create a Post</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <input
-                        type="url"
-                        value={media}
-                        onChange={(e) => setMedia(e.target.value)}
-                        placeholder="Add a pic with your post!"
-                    />
-                </div>
-                {errors.media && submitted && <p>{errors.media}</p>}
+            <h2 className="post-modal-title">Create a Post</h2>
+            <form className="post-modal-form" onSubmit={handleSubmit}>
+                <input
+                className="post-modal-input"
+                    type="url"
+                    value={media}
+                    onChange={(e) => setMedia(e.target.value)}
+                    placeholder="Add a pic with your post!"
+                />
+                {errors.media && submitted && <div className="bottom-error post-modal-error">{errors.media}</div>}
                 <textarea
+                    className="post-modal-textarea"
                     type="text"
                     value={body}
                     onChange={e => setBody(e.target.value)}
                     placeholder="Leave a message ShiftTalker"
                 ></textarea>
-                {errors.body && submitted && <p>{errors.body}</p>}
-                <button type="submit">Post</button>
+                {errors.body && submitted && <div className="bottom-error post-modal-error">{errors.body}</div>}
+                <button className="post-modal-button" type="submit">Post</button>
             </form>
         </div>
     )
