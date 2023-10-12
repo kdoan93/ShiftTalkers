@@ -73,16 +73,18 @@ export const PostDetail = ({ post }) => {
     return (
         <div className="post-details-container">
             <div className="post-upper-details">
-                <NavLink exact to={`/users/${post.user_id}`}>
-                    <img className="post-profile-pic" width="100px" src={post.profile_pic} />
-                </NavLink>
-                <div className="post-user-date">
-                    <p className="post-username">
-                        {post.username}
-                    </p>
-                    <p className="post-created">
-                        {lowBudgetDateConverter(post.created_at)}
-                    </p>
+                <div className="post-user-details">
+                    <NavLink exact to={`/users/${post.user_id}`}>
+                        <img className="post-profile-pic" width="100px" src={post.profile_pic} />
+                    </NavLink>
+                    <div className="post-user-date">
+                        <p className="post-username">
+                            {post.username}
+                        </p>
+                        <p className="post-created">
+                            {lowBudgetDateConverter(post.created_at)}
+                        </p>
+                    </div>
                 </div>
                 {currentUser && currentUser.id === post.user_id ?
                     <div className="post-user-buttons">
@@ -116,7 +118,7 @@ export const PostDetail = ({ post }) => {
                 /> */}
             </div>
             {currentUser &&
-                <div>
+                <div className="post-comment-input">
                     {/* <h3>Leave a comment!</h3> */}
                     <form onSubmit={handleSubmit}>
                         <textarea
@@ -125,7 +127,7 @@ export const PostDetail = ({ post }) => {
                             onChange={e => setComment(e.target.value)}
                             placeholder="Leave a comment!"
                             ></textarea>
-                        <button type="submit">Submit Comment</button>
+                        <button type="submit">Send It</button>
                         {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
                     </form>
                 </div>
