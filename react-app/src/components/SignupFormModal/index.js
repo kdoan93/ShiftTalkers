@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signUp } from "../../store/session";
 import { useModal } from "../../context/Modal";
 import "./SignupForm.css";
-import { Redirect } from "react-router-dom";
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
-	const sessionUser = useSelector((state) => state.session.user);
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [first_name, setFirstName] = useState("")
@@ -19,35 +17,56 @@ function SignupFormModal() {
 
 	const { closeModal } = useModal()
 
-	if (sessionUser) return <Redirect to="/" />;
-
 	// useEffect(() => {
-	// 	const errors = {};
-
-	// 	if (email)
-	// })
+	// 	setErrors([])
+	// }, [
+	// 	dispatch,
+	// 	handleSubmit,
+	// 	username.length,
+	// 	email.length,
+	// 	first_name.length,
+	// 	last_name.length,
+	// 	profile_pic.length,
+	// 	password.length,
+	// 	confirmPassword.length
+	// ])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword && !Object.values(errors).length) {
 			const data = await dispatch(signUp(username, email, first_name, last_name, profile_pic, password));
-			closeModal()
+			// closeModal()
 			if (data) {
 				console.log("SignupFormModal data: ", data)
 			setErrors(data)
+			} else {
+				closeModal()
 			}
 		} else {
 			setErrors(['Confirm Password field must be the same as the Password field']);
 		}
 	};
 
+	useEffect(() => {
+		setErrors([])
+	}, [
+		dispatch,
+		username.length,
+		email.length,
+		first_name.length,
+		last_name.length,
+		profile_pic.length,
+		password.length,
+		confirmPassword.length
+	])
+
 	return (
 		<div className="signup-form-container">
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
-				<ul>
-				{errors.map((error, idx) => <li key={idx}>{error}</li>)}
-				</ul>
+				<p>
+				{errors.map((error, idx) => <p key={idx}>{error.split(":")[1]}</p>)}
+				</p>
 				<label>
 				Email
 				<input
@@ -57,6 +76,7 @@ function SignupFormModal() {
 					// required
 				/>
 				</label>
+				{/* {errors.forEach((error) => error.includes("email") ? <div>ERROR</div> : <></>)} */}
 				<label>
 				Username
 				<input
