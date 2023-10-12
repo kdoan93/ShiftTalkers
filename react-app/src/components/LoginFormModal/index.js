@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import "./LoginForm.css";
+import "../SignupFormModal/SignupForm.css";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -21,6 +21,14 @@ function LoginFormModal() {
     }
   };
 
+  useEffect(() => {
+    setErrors([])
+  }, [
+    dispatch,
+    email.length,
+    password.length
+  ])
+
   const handleDemoLogin = async (e) => {
     e.preventDefault()
     const data = await dispatch(login("demo@aa.io", "password"))
@@ -32,21 +40,19 @@ function LoginFormModal() {
   }
 
   return (
-    <>
+    <div className="signup-form-container">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+        <p>
+				  {errors.map((error, idx) => <p key={idx}>{error.split(":")[1]}</p>)}
+				</p>
         <label>
           Email
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
+            // required
           />
         </label>
         <label>
@@ -55,17 +61,17 @@ function LoginFormModal() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            // required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="signup-button" type="submit">Log In</button>
       </form>
       <div className="login-demo-user">
-        <button className="demo-user-button" onClick={handleDemoLogin}>
+        <button className="signup-button" onClick={handleDemoLogin}>
           Go for a test drive! (Log In as Demo User)
         </button>
       </div>
-    </>
+    </div>
   );
 }
 

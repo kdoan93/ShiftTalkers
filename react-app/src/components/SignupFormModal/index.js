@@ -51,7 +51,7 @@ function SignupFormModal() {
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
 				<p>
-				{errors.map((error, idx) => <p key={idx}>{error.split(":")[1]}</p>)}
+					{errors.map((error, idx) => <p key={idx}>{error.split(":")[1]}</p>)}
 				</p>
 				<label>
 				Email
