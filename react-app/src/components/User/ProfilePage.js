@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import "./User.css"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"

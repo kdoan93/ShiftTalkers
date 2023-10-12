@@ -17,20 +17,6 @@ function SignupFormModal() {
 
 	const { closeModal } = useModal()
 
-	// useEffect(() => {
-	// 	setErrors([])
-	// }, [
-	// 	dispatch,
-	// 	handleSubmit,
-	// 	username.length,
-	// 	email.length,
-	// 	first_name.length,
-	// 	last_name.length,
-	// 	profile_pic.length,
-	// 	password.length,
-	// 	confirmPassword.length
-	// ])
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword && !Object.values(errors).length) {
@@ -70,7 +56,7 @@ function SignupFormModal() {
 				<label>
 				Email
 				<input
-					type="text"
+					type="email"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 					// required

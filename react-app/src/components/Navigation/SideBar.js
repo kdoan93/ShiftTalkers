@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { CreatePostModal } from '../Post/CreatePost';
 import './SideBar.css';
 
-function SideBar({ isLoaded }){
+function SideBar(){
     const dispatch = useDispatch()
     const history = useHistory()
 	const sessionUser = useSelector(state => state.session.user);

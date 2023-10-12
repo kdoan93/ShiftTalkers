@@ -13,8 +13,6 @@ export const UpdateCommentModal = ({ comment }) => {
 
     const { closeModal } = useModal()
 
-    // console.log("CreateComment media: ", updateComment)
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors({})
@@ -34,12 +32,9 @@ export const UpdateCommentModal = ({ comment }) => {
     }
 
     useEffect(() => {
-        // const errors = {}
-        // if (!updateComment) errors.updateComment = "Comment must have at least one character!"
-        // setErrors(errors)
         setSubmitted(false)
         dispatch(commentsActions.thunkGetComment(comment.id))
-    }, [dispatch, updateComment])
+    }, [dispatch, updateComment, comment.id])
 
     return (
         <div className="create-comment-container">

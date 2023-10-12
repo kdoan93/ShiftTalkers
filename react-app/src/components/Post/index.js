@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import OpenModalButton from "../OpenModalButton";
-import { thunkCreateComment, thunkGetComments, thunkGetPostComments } from "../../store/comment";
+import { thunkCreateComment } from "../../store/comment";
 import { UpdatePostModal } from "./UpdatePostModal";
 import { DeletePostModal } from "./DeletePostModal";
 import { PostComments } from "../Comment";

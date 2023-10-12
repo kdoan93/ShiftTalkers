@@ -12,13 +12,12 @@ export const DeleteCommentModal = ({ comment, postId }) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        // return dispatch(commentActions.thunkDeleteComment(comment.id))
         return dispatch(commentActions.thunkDeleteComment(comment.id)).then(closeModal)
     }
 
     useEffect(() => {
         dispatch(commentActions.thunkGetPostComments(postId))
-    }, [dispatch])
+    }, [dispatch, postId])
 
     return (
         <div className="deleteModal">

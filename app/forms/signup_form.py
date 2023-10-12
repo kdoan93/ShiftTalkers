@@ -24,14 +24,9 @@ def url_validator(form, field):
     if ".jpeg" not in field.data and ".jpg" not in field.data and ".png" not in field.data:
         raise ValidationError("URL must contain .jpeg, .jpg, or .png")
 
-def email_validator(form, field):
-    if "[^@]+@[^@]+\.[^@]+" not in field.data:
-        raise ValidationError("Email format is incorrect")
-
 
 class SignUpForm(FlaskForm):
-    email = EmailField('email', validators=[Length(min=6, message="Email field is required"), user_exists])
-    # email = StringField('email', validators=[Length(min=6, message="Email field is required"), user_exists])
+    email = StringField('email', validators=[Length(min=6, message="Email field is required"), user_exists])
     username = StringField('username', validators=[Length(min=1, message="Username must have at least 1 character"), username_exists])
     first_name = StringField('first_name', validators=[Length(min=1, message="First name must have at least 1 character")])
     last_name = StringField('last_name', validators=[Length(min=1, message="Last name must have at least 1 character")])

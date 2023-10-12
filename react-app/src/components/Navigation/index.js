@@ -24,8 +24,8 @@ function Navigation({ isLoaded }){
 						</div>
 					</div>
 				</div>
-			) : (
-				<></>
+				) : (
+					<></>
 			)}
 		</div>
 	);
