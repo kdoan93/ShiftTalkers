@@ -12,9 +12,9 @@
   position: fixed;
   top: 0px;
   display: flex;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   justify-content: space-between;
   height: 80px;
-  width: 75%;
-  margin-left: 10%;
+  width: 79%;
+  /* margin-left: 10%; */
 }
