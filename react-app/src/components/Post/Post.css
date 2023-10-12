@@ -114,6 +114,7 @@
     min-height: 50px;
     height: fit-content;
     box-shadow: 2px 2px 4px black;
+    background: transparent;
     width: 100%;
     padding: 0px;
 }
