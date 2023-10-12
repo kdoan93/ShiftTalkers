@@ -29,7 +29,7 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (password === confirmPassword) {
+		if (password === confirmPassword && !Object.values(errors).length) {
 			const data = await dispatch(signUp(username, email, first_name, last_name, profile_pic, password));
 			closeModal()
 			if (data) {
@@ -42,78 +42,78 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-		<h1>Sign Up</h1>
-		<form onSubmit={handleSubmit}>
-			<ul>
-			{errors.map((error, idx) => <li key={idx}>{error}</li>)}
-			</ul>
-			<label>
-			Email
-			<input
-				type="text"
-				value={email}
-				onChange={(e) => setEmail(e.target.value)}
-				required
-			/>
-			</label>
-			<label>
-			Username
-			<input
-				type="text"
-				value={username}
-				onChange={(e) => setUsername(e.target.value)}
-				required
-			/>
-			</label>
-			<label>
-			First Name
-			<input
-				type="text"
-				value={first_name}
-				onChange={(e) => setFirstName(e.target.value)}
-				required
-			/>
-			</label>
-			<label>
-			Last Name
-			<input
-				type="text"
-				value={last_name}
-				onChange={(e) => setLastName(e.target.value)}
-				required
-			/>
-			</label>
-			<label>
-			Profile Picture
-			<input
-				type="url"
-				value={profile_pic}
-				onChange={(e) => setProfilePic(e.target.value)}
-				required
-			/>
-			</label>
-			<label>
-			Password
-			<input
-				type="password"
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-				required
-			/>
-			</label>
-			<label>
-			Confirm Password
-			<input
-				type="password"
-				value={confirmPassword}
-				onChange={(e) => setConfirmPassword(e.target.value)}
-				required
-			/>
-			</label>
-			<button type="submit">Sign Up</button>
-		</form>
-		</>
+		<div className="signup-form-container">
+			<h1>Sign Up</h1>
+			<form onSubmit={handleSubmit}>
+				<ul>
+				{errors.map((error, idx) => <li key={idx}>{error}</li>)}
+				</ul>
+				<label>
+				Email
+				<input
+					type="text"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					// required
+				/>
+				</label>
+				<label>
+				Username
+				<input
+					type="text"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
+					// required
+				/>
+				</label>
+				<label>
+				First Name
+				<input
+					type="text"
+					value={first_name}
+					onChange={(e) => setFirstName(e.target.value)}
+					// required
+				/>
+				</label>
+				<label>
+				Last Name
+				<input
+					type="text"
+					value={last_name}
+					onChange={(e) => setLastName(e.target.value)}
+					// required
+				/>
+				</label>
+				<label>
+				Profile Picture
+				<input
+					type="url"
+					value={profile_pic}
+					onChange={(e) => setProfilePic(e.target.value)}
+					// required
+				/>
+				</label>
+				<label>
+				Password
+				<input
+					type="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					// required
+				/>
+				</label>
+				<label>
+				Confirm Password
+				<input
+					type="password"
+					value={confirmPassword}
+					onChange={(e) => setConfirmPassword(e.target.value)}
+					// required
+				/>
+				</label>
+				<button className="signup-button" type="submit">SEND IT!</button>
+			</form>
+		</div>
 	);
 }
 
