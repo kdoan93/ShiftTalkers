@@ -18,7 +18,12 @@ function Navigation({ isLoaded }){
 				<div>
 					<div>
 						<NavLink exact to={`/users/${sessionUser.id}`} >
-							<img style={ { width: '60px', height: '60px', borderRadius: '50%', margin: '10px 3px' } } src={sessionUser.profile_pic} className="navigation-profile-pic" border='0' />
+							<img
+								style={ { width: '60px', height: '60px', borderRadius: '50%', margin: '10px 3px' } }
+								src={sessionUser.profile_pic}
+								className="navigation-profile-pic"
+								border='0'
+							/>
 						</NavLink>
 						<div>
 						</div>

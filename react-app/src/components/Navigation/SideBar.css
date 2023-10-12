@@ -58,3 +58,14 @@
 .create-post-modal button:hover {
     cursor: pointer;
 }
+
+.sidebar-login-signup button {
+    border: transparent;
+    margin: 0px 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.sidebar-login-signup button:hover {
+    cursor: pointer;
+}
