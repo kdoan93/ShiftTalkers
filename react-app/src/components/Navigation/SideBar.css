@@ -23,9 +23,8 @@
     /* border: 1px solid red; */
     display: flex;
     font-weight: 700;
-    /* width: 65px; */
     text-align: center;
-    margin-bottom: 25px;
+    margin: 0px 0px 10px 0px;
 }
 
 .sidebar-logout i {
@@ -53,16 +52,33 @@
     width: 100%;
     font-weight: 700;
     font-size: 16px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.create-post-button-text i {
+    /* border: 1px solid red; */
+    margin-right: 10px;
 }
 
 .create-post-modal button:hover {
     cursor: pointer;
 }
 
+.sidebar-login-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
 .sidebar-login-signup button {
     /* border: 1px solid red; */
     /* margin: 0px 10px; */
     border: transparent;
+    background-color: snow;
     padding: 0px;
     font-weight: 700;
     font-size: 16px;
