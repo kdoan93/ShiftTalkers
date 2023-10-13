@@ -122,6 +122,36 @@ def seed_comments():
         user_id = 1,
         comment = "4 time consecutive Le Mans Champion!"
     )
+    comment25 = Comment(
+        post_id = 15,
+        user_id = 2,
+        comment = "Legends never die"
+    )
+    comment26 = Comment(
+        post_id = 16,
+        user_id = 1,
+        comment = "I see Godzilla can't park!"
+    )
+    comment27 = Comment(
+        post_id = 17,
+        user_id = 3,
+        comment = "He'll be missed in Formula D!"
+    )
+    comment28 = Comment(
+        post_id = 18,
+        user_id = 1,
+        comment = "Drift King and the coolest Corolla in history"
+    )
+    comment29 = Comment(
+        post_id = 19,
+        user_id = 3,
+        comment = "2 DTM legends!"
+    )
+    comment30 = Comment(
+        post_id = 20,
+        user_id = 2,
+        comment = "Legends never die"
+    )
 
 
     comments = [
@@ -149,6 +179,12 @@ def seed_comments():
         comment22,
         comment23,
         comment24,
+        comment25,
+        comment26,
+        comment27,
+        comment28,
+        comment29,
+        comment30
     ]
     add_comment = [ db.session.add(comment) for comment in comments ]
     db.session.commit()
