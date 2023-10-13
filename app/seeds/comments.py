@@ -152,6 +152,21 @@ def seed_comments():
         user_id = 2,
         comment = "Legends never die"
     )
+    comment31 = Comment(
+        post_id = 10,
+        user_id = 4,
+        comment = "E46 > F80. I said what I said!"
+    )
+    comment32 = Comment(
+        post_id = 5,
+        user_id = 4,
+        comment = "Alright! I'll admit it, this generation Prius actually looks good"
+    )
+    comment33 = Comment(
+        post_id = 5,
+        user_id = 2,
+        comment = "Sure they look good, but they're still slow though! 🤣"
+    )
 
 
     comments = [
@@ -184,7 +199,10 @@ def seed_comments():
         comment27,
         comment28,
         comment29,
-        comment30
+        comment30,
+        comment31,
+        comment32,
+        comment33
     ]
     add_comment = [ db.session.add(comment) for comment in comments ]
     db.session.commit()
