@@ -60,25 +60,16 @@ function SideBar(){
 				</div>
 			) : (
                 <div className='sidebar-login-signup'>
-                    <div>
-                        <i class="fa-solid fa-gas-pump"></i>
-                        <OpenModalButton
-                            className="sidebar-buttons"
-                            buttonText="Log In"
-                            onItemClick={closeMenu}
-                            modalComponent={<LoginFormModal />}
-                        />
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-flag-checkered"></i>
-                        <OpenModalButton
-                            className="sidebar-buttons"
-                            buttonText="Sign Up"
-                            onItemClick={closeMenu}
-                            modalComponent={<SignupFormModal />}
-                        />
-                    </div>
-
+                    <OpenModalButton
+                        buttonText={<div><i class="fa-solid fa-gas-pump"/>Log In</div>}
+                        onItemClick={closeMenu}
+                        modalComponent={<LoginFormModal />}
+                    />
+                    <OpenModalButton
+                        buttonText={<div><i class="fa-solid fa-flag-checkered"/>Sign Up</div>}
+                        onItemClick={closeMenu}
+                        modalComponent={<SignupFormModal />}
+                    />
                 </div>
             )}
 		</div>
