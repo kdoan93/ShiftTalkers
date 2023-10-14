@@ -21,16 +21,13 @@ function SignupFormModal() {
 		e.preventDefault();
 		if (password === confirmPassword && !Object.values(errors).length) {
 			const data = await dispatch(signUp(username, email, first_name, last_name, profile_pic, password));
-			// closeModal()
 			if (data) {
 				console.log("SignupFormModal data: ", data)
-			setErrors(data)
-			} else {
-				closeModal()
-			}
-		} else {
-			setErrors(['Confirm Password field must be the same as the Password field']);
-		}
+				setErrors(data)
+
+			} else closeModal()
+
+		} else setErrors(['password: Confirm Password field must be the same as the Password field']);
 	};
 
 	useEffect(() => {
