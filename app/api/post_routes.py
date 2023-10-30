@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request, redirect
 from app.models import Post, User, Comment, Like
 from ..forms.post_form import PostForm
 from ..forms.comment_form import CommentForm
+from ..forms.like_form import LikeForm
 from datetime import date
 from ..models.db import db
 from flask_login import current_user, login_required
@@ -52,6 +53,21 @@ def get_all_post_comments(postId):
 
     return post_comments
 
+
+@post_routes.route('/<int:postId>/likes')
+def get_likes_by_id(postId):
+    """
+    Query for likes by post.id
+    """
+
+    all_likes = Like.query.all()
+
+    post_likes = [ like.to_dict() for like in all_likes if like.post_id == postId ]
+
+    if not post_likes:
+        return { "message": "Post not found!" }, 404
+
+    return post_likes
 
 
 @post_routes.route('/current')
@@ -121,6 +137,31 @@ def create_comment(postId):
         db.session.add(new_comment)
         db.session.commit()
         return new_comment.to_dict(), 201
+
+    else:
+        print(form.errors)
+        return { "errors": form.errors }, 400
+
+
+@post_routes.route('/<int:postId>/likes', methods=["POST"])
+@login_required
+def add_like(postId):
+    """
+    Route to add a like by post.id
+    """
+    form = LikeForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        new_like = Like(
+            post_id = postId,
+            user_id = current_user.id,
+            created_at = date.today()
+        )
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict(), 201
 
     else:
         print(form.errors)
