@@ -149,23 +149,31 @@ def add_like(postId):
     """
     Route to add a like by post.id
     """
+
+    likes = Like.query.all()
+
+    has_liked = [ like.to_dict() for like in likes if like.user_id == current_user.id ]
+
     form = LikeForm()
 
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    if form.validate_on_submit():
-        new_like = Like(
-            post_id = postId,
-            user_id = current_user.id,
-            created_at = date.today()
-        )
-        db.session.add(new_like)
-        db.session.commit()
-        return new_like.to_dict(), 201
+    if not has_liked:
+        if form.validate_on_submit():
+            new_like = Like(
+                post_id = postId,
+                user_id = current_user.id,
+                created_at = date.today()
+            )
+            db.session.add(new_like)
+            db.session.commit()
+            return new_like.to_dict(), 201
 
+        else:
+            print(form.errors)
+            return { "errors": form.errors }, 400
     else:
-        print(form.errors)
-        return { "errors": form.errors }, 400
+        return { "errors": "User has already liked this post!" }, 400
 
 
 @post_routes.route("/<int:postId>", methods=["PUT"])
