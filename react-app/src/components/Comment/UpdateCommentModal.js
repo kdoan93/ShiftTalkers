@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import * as commentsActions from "../../store/comment"
+import "./CommentModal.css"
 
 
 export const UpdateCommentModal = ({ comment }) => {
@@ -38,16 +39,17 @@ export const UpdateCommentModal = ({ comment }) => {
 
     return (
         <div className="create-comment-container">
-            <h2>Update your Comment</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 className="comment-modal-title">Update your Comment</h2>
+            <form className="comment-modal-form" onSubmit={handleSubmit}>
                 <textarea
+                    className="comment-modal-textarea"
                     type="text"
                     value={updateComment}
                     onChange={e => setUpdateComment(e.target.value)}
                     placeholder="Update your comment?"
                 ></textarea>
-                {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
-                <button type="submit">Update Comment</button>
+                {errors && submitted && <div className="bottom-error comment-modal-error">Comment needs at least one character</div>}
+                <button className="comment-modal-button" type="submit">Update Comment</button>
             </form>
         </div>
     )

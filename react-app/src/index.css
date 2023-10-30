@@ -18,3 +18,56 @@ body {
     width: 80%;
     margin-left: 10%;
 }
+
+@media (max-width: 1039px) {
+    #root {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .nav-bar {
+        /* border: 1px solid red; */
+        width: 96%;
+    }
+
+    .nav-bar .logo {
+        /* border: 1px solid red; */
+        /* width: 75%; */
+        /* height: 75%; */
+        margin: 10px 0px;
+    }
+
+    .sidebar-navlink i {
+        /* border: 1px solid red; */
+        display: none;
+    }
+
+    .sidebar-navlink .text {
+        font-size: medium;
+    }
+
+    .sidebar-login-signup i {
+        display: none;
+    }
+
+    .create-post-modal i {
+        /* border: 1px solid red; */
+        display: none;
+    }
+
+    .create-post-modal button {
+        border-radius: 20px;
+        height: 20px;
+        font-size: smaller;
+    }
+
+    .landing-page-container {
+        margin-top: 90px;
+    }
+
+    .post-landing-page-container {
+        /* border: 1px solid red; */
+        margin: 0px 5% 0px 23%;
+    }
+
+}

@@ -1,0 +1,41 @@
+.post-modal-title {
+    text-align: center;
+}
+
+.post-modal-form {
+    /* border: 1px solid red; */
+    margin: 20px;
+}
+
+.post-modal-input {
+    border: 1px solid black;
+    width: 98%;
+    padding: 5px;
+    margin: 10px 0px;
+}
+
+.post-modal-textarea {
+    /* border: 1px solid red; */
+    background-color: transparent;
+    width: 98%;
+    padding: 5px;
+    height: 50px;
+}
+
+.post-modal-button {
+    /* border: 1px solid red; */
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+.post-modal-button:hover {
+    cursor: pointer;
+}
+
+.post-modal-error {
+    text-align: center;
+}

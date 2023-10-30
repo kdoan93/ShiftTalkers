@@ -78,6 +78,31 @@ def seed_posts():
         media="https://images.saatchiart.com/saatchi/1711693/art/10100409/9163181-WWWVGOSA-7.jpg",
         body="KB43VER",
     )
+    post16 = Post(
+        user_id = 4,
+        media = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Nissan_Skyline_GT-R_R34_V_Spec_II.jpg/1200px-Nissan_Skyline_GT-R_R34_V_Spec_II.jpg",
+        body = "Spotted Godzilla in the wild!"
+    )
+    post17 = Post(
+        user_id = 4,
+        media = "https://cdn.recaro-automotive.com/fileadmin/00-corporate-website/07-Partners/wor-hero_1660x600-chelsea-denofa.png?v=1630101508",
+        body = "Chelsea DeNofa is officially retiring Formula Drift! 😭"
+    )
+    post18 = Post(
+        user_id = 4,
+        media = "https://imgx.gridoto.com/crop/0x0:0x0/700x465/photo/2022/01/19/f-iec7kwsrusup_2jrektwjpg-20220119055755.jpg",
+        body = "Keiichi Tsuchiya and his legendary AE86!"
+    )
+    post19 = Post(
+        user_id = 4,
+        media = "https://www.autozeitung.de/assets/field/image/bmw-m3-e30-mercedes-190-evo.jpg",
+        body = "🖤🧡💛"
+    )
+    post20 = Post(
+        user_id = 4,
+        media = "https://fuelfed.files.wordpress.com/2012/09/reynolds_trans_am.jpg?w=584",
+        body = "RIP Burt"
+    )
 
     posts = [
         post1,
@@ -94,7 +119,12 @@ def seed_posts():
         post12,
         post13,
         post14,
-        post15
+        post15,
+        post16,
+        post17,
+        post18,
+        post19,
+        post20
     ]
     add_post = [ db.session.add(post) for post in posts ]
     db.session.commit()

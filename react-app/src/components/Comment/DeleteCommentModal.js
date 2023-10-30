@@ -21,13 +21,19 @@ export const DeleteCommentModal = ({ comment, postId }) => {
 
     return (
         <div className="deleteModal">
-            <div className="deleteTitle">
-                <h2 className="confirmDeleteTitle">Confirm Delete</h2>
-                <p className="deleteParagraph">Are you sure you want to delete this comment?</p>
-            </div>
-            <div className="deleteButtons">
-                <button className="b yesButton" onClick={handleClick}> Yes (Delete Comment) </button>
-                <button className="b noButton" onClick={closeModal}> No (Keep Comment) </button>
+            <div className="comment-modal-form">
+                <h2 className="comment-modal-title">
+                    Confirm Delete
+                    </h2>
+                <p className="deleteParagraph">
+                    Are you sure you want to delete this comment?
+                </p>
+                <button className="comment-modal-button" onClick={handleClick}>
+                    Yes (Delete Comment)
+                </button>
+                <button className="comment-modal-button" onClick={closeModal}>
+                    No (Keep Comment)
+                </button>
             </div>
         </div>
     )

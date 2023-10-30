@@ -75,6 +75,7 @@
     margin: 20px 0px;
     margin-left: 10%;
     width: 80%;
+    overflow-wrap: break-word;
 }
 
 .post-pics {
@@ -126,7 +127,24 @@
     border-radius: 25px;
     /* font-weight: 700; */
     font-size: 16px;
-    width: 25%;
+    /* width: 25%; */
     color: white;
     background-color: black;
+}
+
+.post-comment-input button:hover {
+    cursor: pointer;
+}
+
+.post-comment-bottom {
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.post-comment-bottom button {
+    /* border: 1px solid red; */
+    width: 150px;
 }

@@ -111,24 +111,20 @@ export const PostDetail = ({ post }) => {
 
             <div>
                 <PostComments post={post} />
-                {/* <OpenModalButton
-                    className="update-post-button"
-                    buttonText="Read all comments"
-                    modalComponent={<PostComments post={post} />}
-                /> */}
             </div>
             {currentUser &&
                 <div className="post-comment-input">
-                    {/* <h3>Leave a comment!</h3> */}
                     <form onSubmit={handleSubmit}>
                         <textarea
                             type="text"
                             value={comment}
                             onChange={e => setComment(e.target.value)}
                             placeholder="Leave a comment!"
-                            ></textarea>
-                        <button type="submit">Send It</button>
-                        {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                        ></textarea>
+                        <div className="post-comment-bottom">
+                            <button type="submit">Send It</button>
+                            {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                        </div>
                     </form>
                 </div>
             }
