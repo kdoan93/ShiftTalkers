@@ -10,6 +10,7 @@ import { DeletePostModal } from "./DeletePostModal";
 import { PostComments } from "../Comment";
 import { thunkGetPostInfo } from "../../store/post";
 import "./Post.css"
+import { PostLikes } from "../Like";
 
 export const PostDetail = ({ post }) => {
     const [comment, setComment] = useState("")
@@ -18,9 +19,11 @@ export const PostDetail = ({ post }) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    const { postId } = useParams()
+    // const { postId } = useParams()
 
     const currentUser = useSelector((state) => state.session.user)
+
+
 
     // const allComments = useSelector((state) => state.comments.allComments)
     // const comments = Object.values(allComments)
@@ -67,8 +70,6 @@ export const PostDetail = ({ post }) => {
         }
         // setSubmitted(false)
     }
-
-    // if (!comments) return null
 
     return (
         <div className="post-details-container">
@@ -124,6 +125,7 @@ export const PostDetail = ({ post }) => {
                         <div className="post-comment-bottom">
                             <button type="submit">Send It</button>
                             {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
+                            <PostLikes post={post} />
                         </div>
                     </form>
                 </div>

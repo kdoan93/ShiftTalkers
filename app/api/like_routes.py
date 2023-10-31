@@ -10,7 +10,7 @@ from flask_login import current_user, login_required
 like_routes = Blueprint('like', __name__)
 
 
-@like_routes.route('/')
+@like_routes.route('')
 def get_all_likes():
     """
     Query for all likes and returns them in a list of dictionaries
@@ -20,8 +20,7 @@ def get_all_likes():
 
     all_like_list = [like.to_dict() for like in likes]
 
-    # return "POST ROUTE"
-    return { "likes": all_like_list }
+    return all_like_list
 
 
 @like_routes.route('/<int:likeId>', methods=["DELETE"])

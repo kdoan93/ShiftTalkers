@@ -65,7 +65,7 @@ def get_likes_by_id(postId):
     post_likes = [ like.to_dict() for like in all_likes if like.post_id == postId ]
 
     if not post_likes:
-        return { "message": "Post not found!" }, 404
+        return { "message": "Post has no likes!" }, 404
 
     return post_likes
 

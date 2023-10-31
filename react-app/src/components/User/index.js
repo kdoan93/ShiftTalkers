@@ -14,7 +14,7 @@ export const UserDetail = () => {
 
     let userPosts = useSelector((state) => state.posts.allPosts)
     userPosts = Object.values(userPosts).reverse()
-    console.log("UserDetails userPosts: ", userPosts)
+    // console.log("UserDetails userPosts: ", userPosts)
 
     const user = useSelector((state) => state.session.user)
     // console.log("UserDetail user: ", user)
@@ -38,7 +38,7 @@ export const UserDetail = () => {
     return (
         <div className="user-detail-container">
             <div className="user-detail-upper">
-                <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} />
+                {userPosts && <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} />}
                 {/* <img className="user-detail-profile-pic" src={user.profile_pic} /> */}
                 <div className="user-detail-user-info">
                     <p className="user-detail-name">
