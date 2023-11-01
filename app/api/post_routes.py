@@ -158,22 +158,22 @@ def add_like(postId):
 
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    if not has_liked:
-        if form.validate_on_submit():
-            new_like = Like(
-                post_id = postId,
-                user_id = current_user.id,
-                created_at = date.today()
-            )
-            db.session.add(new_like)
-            db.session.commit()
-            return new_like.to_dict(), 201
+    # if not has_liked:
+    if form.validate_on_submit():
+        new_like = Like(
+            post_id = postId,
+            user_id = current_user.id,
+            created_at = date.today()
+        )
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict(), 201
 
-        else:
-            print(form.errors)
-            return { "errors": form.errors }, 400
     else:
-        return { "errors": "User has already liked this post!" }, 400
+        print(form.errors)
+        return { "errors": form.errors }, 400
+    # else:
+    #     return { "errors": "User has already liked this post!" }, 400
 
 
 @post_routes.route("/<int:postId>", methods=["PUT"])

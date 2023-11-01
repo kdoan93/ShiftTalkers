@@ -115,7 +115,7 @@ export const PostDetail = ({ post }) => {
             </div>
             {currentUser &&
                 <div className="post-comment-input">
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <textarea
                             type="text"
                             value={comment}
@@ -123,7 +123,7 @@ export const PostDetail = ({ post }) => {
                             placeholder="Leave a comment!"
                         ></textarea>
                         <div className="post-comment-bottom">
-                            <button type="submit">Send It</button>
+                            <button type="submit" onClick={handleSubmit}>Send It</button>
                             {errors && submitted && <div className="bottom-error">Comment needs at least one character</div>}
                             <PostLikes post={post} />
                         </div>
