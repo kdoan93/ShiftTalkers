@@ -1,5 +1,18 @@
-.likes-container{
-    border: 1px solid red;
+.likes-container {
+    /* border: 1px solid red; */
     display: flex;
-    flex-direction: column;
+    gap: 10px;
+    /* flex-direction: column; */
+}
+
+.likes-container button .like-thumb {
+    /* border: 1px solid red; */
+    padding-left: 10px;
+}
+
+.likes-counter {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    font-weight: 700;
 }
