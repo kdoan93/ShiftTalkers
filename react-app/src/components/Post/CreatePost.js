@@ -27,7 +27,7 @@ export const CreatePostModal = () => {
 
         if (!body) errors.body = "Post needs at least one character"
 
-        if (errors) console.log("CreatePostModal errors: ", errors)
+        // if (errors) console.log("CreatePostModal errors: ", errors)
 
     }, [dispatch, media.length, body])
 

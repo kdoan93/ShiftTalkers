@@ -43,7 +43,7 @@ export const thunkGetUser = (userId) => async (dispatch) => {
 	if (res.ok) {
 		const data = await res.json()
 		dispatch(getUser(data))
-		console.log("store/session thunkGetUser res: ", res)
+		// console.log("store/session thunkGetUser res: ", res)
 		return res
 	} else {
 		const errors = await res.json()
@@ -137,7 +137,7 @@ export default function reducer(state = initialState, action) {
 		case GET_USER:
 			newState = { ...state, user: {} }
 			newState.user = action.user
-			console.log("store/session GET_USER newState: ", newState)
+			// console.log("store/session GET_USER newState: ", newState)
 			return newState
 
 		default:
