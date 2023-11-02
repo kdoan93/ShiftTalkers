@@ -21,6 +21,14 @@ ShiftTalkers is a Twitter website clone for car enthusiasts to have a platform t
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-%23FCA121.svg?style=for-the-badge&logo=sqlalchemy&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
+## Wiki Links
+- [DB Schema](https://github.com/kdoan93/ShiftTalkers/wiki/DB-Schema)
+- [Feature List](https://github.com/kdoan93/ShiftTalkers/wiki/Feature-List)
+- [User Stories](https://github.com/kdoan93/ShiftTalkers/wiki/User-Stories)
+- [Wireframes](https://github.com/kdoan93/ShiftTalkers/wiki/Wireframes)
+
+## Screenshots
+
 ### Landing Page
 ![image](https://github.com/kdoan93/ShiftTalkers/assets/131625868/e87e2618-26b0-4995-ac70-7bb8ec362526)
 
