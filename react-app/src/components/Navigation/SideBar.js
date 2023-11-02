@@ -25,72 +25,88 @@ function SideBar(){
 
 	return (
 		<div className='sideBar'>
-			<div className='sidebar-navlink'>
-				<NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>
-                    <i class="fa-solid fa-house"></i>
-                    <span className='text'>
-                        Home
-                    </span>
-                </NavLink>
-			</div>
-			{sessionUser ? (
-				<div className='user-sidebar'>
-					<div className='sidebar-navlink'>
-                        <div>
-						    <NavLink
-                                exact to={`/users/current`}
-                                style={{ textDecoration: 'none', color: "black" }}>
-                                    <i class="fa-solid fa-warehouse"></i>
-                                    <span className='text'>
-                                        Profile Page
-                                    </span>
-                            </NavLink>
-                        </div>
-					</div>
-					<div className='sidebar-navlink'>
-                        <p className='sidebar-logout sidebar-links' onClick={handleLogout}>
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            <span className='text'>
-                                Log Out
-                            </span>
-                        </p>
-					</div>
-					<div className="create-post-modal">
-                        <OpenModalButton
-                        style={{ color: "red" }}
-                        className="create-post-button"
-                        buttonText={<div className='create-post-button-text'>
-                                        <i class="fa-solid fa-plus"></i>
-                                        Post
-                                    </div>}
-                        modalComponent={<CreatePostModal />}
-                        />
-					</div>
-				</div>
-			) : (
-                <div className='sidebar-login-signup'>
-                    <OpenModalButton
-                        buttonText={<div>
-                                        <i class="fa-solid fa-gas-pump"/>
-                                        <span className='text'>
-                                            Log In
-                                        </span>
-                                    </div>}
-                        onItemClick={closeMenu}
-                        modalComponent={<LoginFormModal />}
-                    />
-                    <OpenModalButton
-                        buttonText={<div>
-                                        <i class="fa-solid fa-flag-checkered"/>
-                                        <span className='text'>
-                                            Sign Up
-                                        </span>
-                                    </div>}
-                        onItemClick={closeMenu}
-                        modalComponent={<SignupFormModal />}
-                    />
+            <div className='upper-sideBar'>
+                <div className='sidebar-navlink'>
+                    <NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>
+                        <i class="fa-solid fa-house"></i>
+                        <span className='text'>
+                            Home
+                        </span>
+                    </NavLink>
                 </div>
-            )}
+                {sessionUser ? (
+                    <div className='user-sidebar'>
+                        <div className='sidebar-navlink'>
+                            <div>
+                                <NavLink
+                                    exact to={`/users/current`}
+                                    style={{ textDecoration: 'none', color: "black" }}>
+                                        <i class="fa-solid fa-warehouse"></i>
+                                        <span className='text'>
+                                            Profile Page
+                                        </span>
+                                </NavLink>
+                            </div>
+                        </div>
+                        <div className='sidebar-navlink'>
+                            <p className='sidebar-logout sidebar-links' onClick={handleLogout}>
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span className='text'>
+                                    Log Out
+                                </span>
+                            </p>
+                        </div>
+                        <div className="create-post-modal">
+                            <OpenModalButton
+                            style={{ color: "red" }}
+                            className="create-post-button"
+                            buttonText={<div className='create-post-button-text'>
+                                            <i class="fa-solid fa-plus"></i>
+                                            Post
+                                        </div>}
+                            modalComponent={<CreatePostModal />}
+                            />
+                        </div>
+                    </div>
+                ) : (
+                    <div className='sidebar-login-signup'>
+                        <OpenModalButton
+                            buttonText={<div>
+                                            <i class="fa-solid fa-gas-pump"/>
+                                            <span className='text'>
+                                                Log In
+                                            </span>
+                                        </div>}
+                            onItemClick={closeMenu}
+                            modalComponent={<LoginFormModal />}
+                        />
+                        <OpenModalButton
+                            buttonText={<div>
+                                            <i class="fa-solid fa-flag-checkered"/>
+                                            <span className='text'>
+                                                Sign Up
+                                            </span>
+                                        </div>}
+                            onItemClick={closeMenu}
+                            modalComponent={<SignupFormModal />}
+                        />
+                    </div>
+                )}
+            </div>
+            <div className='about-links-container'>
+                <div>
+                    <a href='https://github.com/kdoan93/ShiftTalkers'>
+                        <i class="fa-brands fa-square-github fa-2xl gap"/>
+                        GitHub
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.linkedin.com/in/kdoan93/">
+                        <i class="fa-brands fa-linkedin fa-2xl gap"/>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
 		</div>
 	);
 }

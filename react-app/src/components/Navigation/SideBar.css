@@ -6,7 +6,7 @@
     position: fixed;
     top: 80px;
     padding: 20px 20px;
-    /* margin-left: 10% */
+
 }
 
 .sideBar div {
@@ -91,4 +91,24 @@
 .sidebar-login-signup i {
     /* border: 1px solid red; */
     padding-right: 10px;
+}
+
+.about-links-container {
+    /* border: 1px solid red; */
+    /* width: 12%; */
+    position: fixed;
+    bottom: 1%;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    font-weight: 700;
+}
+
+.about-links-container a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gap {
+    margin-right: 10px;
 }
