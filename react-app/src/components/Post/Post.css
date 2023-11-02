@@ -121,13 +121,9 @@
 }
 
 .post-comment-input button {
-    /* border: 1px solid red; */
-    /* box-shadow: 2px 2px 4px black; */
     height: 36px;
     border-radius: 25px;
-    /* font-weight: 700; */
     font-size: 16px;
-    /* width: 25%; */
     color: white;
     background-color: black;
 }
@@ -147,4 +143,18 @@
 .post-comment-bottom button {
     /* border: 1px solid red; */
     width: 150px;
+}
+
+.like-counter {
+    height: 36px;
+    border-radius: 25px;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    width: 150px;
+    margin: 0px 0px 20px 20px;
+}
+
+.space {
+    margin-left: 10px;
 }

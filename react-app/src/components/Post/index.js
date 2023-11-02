@@ -11,6 +11,7 @@ import { PostComments } from "../Comment";
 import { thunkGetPostInfo } from "../../store/post";
 import "./Post.css"
 import { PostLikes } from "../Like";
+import { thunkGetLikes } from "../../store/like";
 
 export const PostDetail = ({ post }) => {
     const [comment, setComment] = useState("")
@@ -19,18 +20,14 @@ export const PostDetail = ({ post }) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    // const { postId } = useParams()
 
     const currentUser = useSelector((state) => state.session.user)
 
+    const postLikes = useSelector((state) => state.likes.allLikes)
 
+    let likes = Object.values(postLikes)
 
-    // const allComments = useSelector((state) => state.comments.allComments)
-    // const comments = Object.values(allComments)
-    // console.log("PostDetail comments: ", comments)
-    // console.log("PostDetail post: ", post)
-
-    // const filterComments = comments.filter(comment => comment.post_id === post.id)
+    const filterLikes = likes.filter(like => like.post_id === post.id)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -40,8 +37,9 @@ export const PostDetail = ({ post }) => {
         return month.concat(day)
     }
 
-    const handleClick = () => {
-        history.push(`/posts/${post.id}`)
+    const logIn = async (e) => {
+        e.preventDefault()
+        alert("Please log in or sign up to like a post!")
     }
 
     useEffect(() => {
@@ -50,6 +48,10 @@ export const PostDetail = ({ post }) => {
         setSubmitted(false)
         dispatch(thunkGetPostInfo(post.id))
     }, [dispatch, comment])
+
+    useEffect(() => {
+        dispatch(thunkGetLikes())
+    }, [dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -113,7 +115,7 @@ export const PostDetail = ({ post }) => {
             <div>
                 <PostComments post={post} />
             </div>
-            {currentUser &&
+            {currentUser ?
                 <div className="post-comment-input">
                     <form>
                         <textarea
@@ -129,6 +131,11 @@ export const PostDetail = ({ post }) => {
                         </div>
                     </form>
                 </div>
+                :
+                    <button className="like-counter" onClick={logIn}>
+                        {filterLikes.length}
+                        <i class="fa-regular fa-thumbs-up like-thumb space"/>
+                    </button>
             }
         </div>
     )

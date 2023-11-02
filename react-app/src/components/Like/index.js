@@ -9,7 +9,7 @@ export const PostLikes = ({ post }) => {
 
     const postId = post.id
 
-    const currentUser = useSelector((state) => state.session.user)
+    let currentUser = useSelector((state) => state.session.user)
 
     const currentUserId = currentUser.id
 
@@ -37,6 +37,7 @@ export const PostLikes = ({ post }) => {
     }
 
     if (!postLikes) return null
+    if (!currentUser) return currentUser = 0
 
     return (
         <div className="likes-container">
@@ -51,9 +52,6 @@ export const PostLikes = ({ post }) => {
                     <i class="fa-regular fa-thumbs-up like-thumb"/>
                 </button>
             }
-            {/* <div className="likes-counter">
-                {filterLikes.length && filterLikes.length > 1 ? filterLikes.length : filterLikes.length} {filterLikes.length !== 1 ? "Likes" : "Like"}
-            </div> */}
         </div>
     )
 }
