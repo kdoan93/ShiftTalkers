@@ -24,7 +24,7 @@ export const PostLikes = ({ post }) => {
 
     useEffect(() => {
         dispatch(thunkGetLikes())
-    }, [dispatch, likes.length, userLiked.length, filterLikes.length])
+    }, [dispatch, likes.length, userLiked.length, filterLikes.length, postLikes.length])
 
     const like = async (e) => {
         e.preventDefault()
