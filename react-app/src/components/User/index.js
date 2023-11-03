@@ -32,28 +32,27 @@ export const UserDetail = () => {
         // dispatch(thunkGetUser(userId))
     }, [dispatch, userPosts.length, userId])
 
+    console.log("before userPosts: ", userPosts)
+
     if (!userPosts) return null
     // if (!user) return null
+    console.log("after userPosts: ", userPosts)
 
     return (
         <div className="user-detail-container">
             <div className="user-detail-upper">
-                {userPosts && <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} />}
-                {/* <img className="user-detail-profile-pic" src={user.profile_pic} /> */}
-                <div className="user-detail-user-info">
+                {userPosts.length && <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} />}
+                {userPosts.length && <div className="user-detail-user-info">
                     <p className="user-detail-name">
                         {userPosts[0].first_name} {userPosts[0].last_name}
-                        {/* {user.first_name} {user.last_name} */}
                     </p>
                     <p className="user-detail-bottom">
                         {userPosts[0].username}
-                        {/* {user.username} */}
                     </p>
                     <p className="user-detail-bottom">
                         Joined: {lowBudgetDateConverter(userPosts[0].created_at)}
-                        {/* Joined: {lowBudgetDateConverter(user.created_at)} */}
                     </p>
-                </div>
+                </div>}
             </div>
             {userPosts.map((post) => (
                 <PostDetail post={post} />

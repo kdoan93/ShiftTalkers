@@ -18,7 +18,7 @@ export const ProfilePage = () => {
     // console.log("UserDetail user: ", user)
 
     const filterPosts = userPosts.map(post => post.user_id === user.id)
-    console.log("ProfilePage filterPosts: ", filterPosts)
+    // console.log("ProfilePage filterPosts: ", filterPosts)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
