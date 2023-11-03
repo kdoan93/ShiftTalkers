@@ -38,7 +38,6 @@ export const thunkGetLikes = () => async (dispatch) => {
     }
 }
 
-// may need to create a reducer to get a post's likes
 export const thunkGetPostLikes = (postId) => async (dispatch) => {
     const res = await csrfFetch(`/api/posts/${postId}/likes`)
 

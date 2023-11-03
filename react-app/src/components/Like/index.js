@@ -17,10 +17,8 @@ export const PostLikes = ({ post }) => {
     let likes = Object.values(postLikes)
 
     const filterLikes = likes.filter(like => like.post_id === post.id)
-    // console.log("filterLikes: ", filterLikes)
 
     const userLiked = filterLikes.filter(like => like.user_id === currentUser.id)
-    // console.log("userLiked: ", userLiked)
 
     useEffect(() => {
         dispatch(thunkGetLikes())

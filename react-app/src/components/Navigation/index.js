@@ -13,7 +13,6 @@ function Navigation({ isLoaded }){
 				<NavLink exact to="/">
 					<img
 						className='logo'
-						// style={{ width: '300px'}}
 						src="https://tinypic.host/images/2023/10/05/ShiftTalkers-logos_transparent-resize-edited.png"
 						alt="ShiftTalkers-logos_transparent-resize-edited.png"
 						border="0"

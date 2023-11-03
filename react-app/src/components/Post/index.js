@@ -1,5 +1,4 @@
 // Index.js for post detail
-import { useHistory, useParams } from "react-router-dom/";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
@@ -9,16 +8,15 @@ import { UpdatePostModal } from "./UpdatePostModal";
 import { DeletePostModal } from "./DeletePostModal";
 import { PostComments } from "../Comment";
 import { thunkGetPostInfo } from "../../store/post";
-import "./Post.css"
 import { PostLikes } from "../Like";
 import { thunkGetLikes } from "../../store/like";
+import "./Post.css"
 
 export const PostDetail = ({ post }) => {
     const [comment, setComment] = useState("")
     const [errors, setErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
 
-    const history = useHistory()
     const dispatch = useDispatch()
 
     const currentUser = useSelector((state) => state.session.user)
@@ -33,7 +31,6 @@ export const PostDetail = ({ post }) => {
         let newDate = String(new Date(date))
         let month = newDate.substring(4, 7)
         let day = newDate.substring(7,10)
-        let year = newDate.substring(10, 16)
         return month.concat(day)
     }
 
@@ -43,8 +40,6 @@ export const PostDetail = ({ post }) => {
     }
 
     useEffect(() => {
-        // dispatch(thunkGetPostComments(post.id))
-        // dispatch(thunkGetComments())
         setSubmitted(false)
         dispatch(thunkGetPostInfo(post.id))
     }, [dispatch, comment])
@@ -62,15 +57,12 @@ export const PostDetail = ({ post }) => {
             )
             setSubmitted(true)
             setComment("")
-            // closeModal()
         } catch (errors) {
             if (errors) {
                 setErrors(errors)
                 setSubmitted(true)
-                // console.log("PostComments errors: ", errors.ok)
             }
         }
-        // setSubmitted(false)
     }
 
     return (
@@ -132,10 +124,10 @@ export const PostDetail = ({ post }) => {
                     </form>
                 </div>
                 :
-                    <button className="like-counter" onClick={logIn}>
-                        {filterLikes.length}
-                        <i class="fa-regular fa-thumbs-up like-thumb space"/>
-                    </button>
+                <button className="like-counter" onClick={logIn}>
+                    {filterLikes.length}
+                    <i class="fa-regular fa-thumbs-up like-thumb space"/>
+                </button>
             }
         </div>
     )

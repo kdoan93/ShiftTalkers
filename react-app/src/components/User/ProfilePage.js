@@ -1,24 +1,19 @@
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import "./User.css"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {  thunkGetUserPosts } from "../../store/post"
+import { thunkGetUserPosts } from "../../store/post"
 import { PostDetail } from "../Post"
+import "./User.css"
 
 
 export const ProfilePage = () => {
-    const history = useHistory()
     const dispatch = useDispatch()
 
     let userPosts = useSelector((state) => state.posts.allPosts)
     userPosts = Object.values(userPosts).reverse()
-    // console.log("UserDetails userPosts: ", userPosts)
 
     const user = useSelector((state) => state.session.user)
-    // console.log("UserDetail user: ", user)
 
     const filterPosts = userPosts.map(post => post.user_id === user.id)
-    // console.log("ProfilePage filterPosts: ", filterPosts)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -31,20 +26,16 @@ export const ProfilePage = () => {
     useEffect(() => {
         dispatch(thunkGetUserPosts(user.id))
     }, [dispatch, userPosts.length])
-    // }, [dispatch, filterPosts.length])
 
     if (!userPosts) return null
     if (!user) return null
-    // if (!filterPosts) return null
 
     return (
         <div className="user-detail-container">
             <div className="user-detail-upper">
-                {/* <img className="user-detail-profile-pic" src={userPosts[0].profile_pic} /> */}
                 <img className="user-detail-profile-pic" src={user.profile_pic} />
                 <div className="user-detail-user-info">
                     <p className="user-detail-name">
-                        {/* {userPosts[0].first_name} {userPosts[0].last_name} */}
                         {user.first_name} {user.last_name}
                     </p>
                     <p className="user-detail-bottom">

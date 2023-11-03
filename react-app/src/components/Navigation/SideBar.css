@@ -1,6 +1,5 @@
 .sideBar {
     border-right: 2px solid black;
-    /* display: grid; */
     width: 12%;
     height: 2000px;
     position: fixed;
@@ -14,13 +13,11 @@
 }
 
 .sidebar-navlink i {
-    /* border: 1px solid red; */
     font-weight: 700;
     margin-right: 10px;
 }
 
 .sidebar-logout {
-    /* border: 1px solid red; */
     display: flex;
     font-weight: 700;
     text-align: center;
@@ -37,7 +34,6 @@
 }
 
 .sidebar-navlink {
-    /* border: 1px solid red; */
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -60,7 +56,6 @@
 }
 
 .create-post-button-text i {
-    /* border: 1px solid red; */
     margin-right: 10px;
 }
 
@@ -75,8 +70,6 @@
 }
 
 .sidebar-login-signup button {
-    /* border: 1px solid red; */
-    /* margin: 0px 10px; */
     border: transparent;
     background-color: snow;
     padding: 0px;
@@ -89,13 +82,10 @@
 }
 
 .sidebar-login-signup i {
-    /* border: 1px solid red; */
     padding-right: 10px;
 }
 
 .about-links-container {
-    /* border: 1px solid red; */
-    /* width: 12%; */
     position: fixed;
     bottom: 1%;
     display: flex;

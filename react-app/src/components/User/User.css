@@ -1,22 +1,18 @@
 .user-detail-container {
-    /* border: 1px solid red; */
     margin: 100px 0px 0px 25%;
 }
 
 .user-detail-upper {
-    /* border: 1px solid red; */
     margin: 10px;
     display: flex;
     align-items: center;
 }
 
 .user-detail-user-info {
-    /* border: 1px solid red; */
     margin-left: 5px;
 }
 
 .user-detail-user-info p {
-    /* border: 1px solid blue; */
     margin: 5px;
 }
 

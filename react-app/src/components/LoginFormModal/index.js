@@ -52,7 +52,6 @@ function LoginFormModal() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            // required
           />
         </label>
         <label>
@@ -61,7 +60,6 @@ function LoginFormModal() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            // required
           />
         </label>
         <button className="signup-button" type="submit">Log In</button>

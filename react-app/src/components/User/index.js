@@ -1,23 +1,17 @@
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min"
-import "./User.css"
+import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { thunkGetUserPosts } from "../../store/post"
 import { PostDetail } from "../Post"
-import { thunkGetUser } from "../../store/session"
+import "./User.css"
 
 
 export const UserDetail = () => {
-    const history = useHistory()
     const { userId } = useParams()
     const dispatch = useDispatch()
 
     let userPosts = useSelector((state) => state.posts.allPosts)
     userPosts = Object.values(userPosts).reverse()
-    // console.log("UserDetails userPosts: ", userPosts)
-
-    const user = useSelector((state) => state.session.user)
-    // console.log("UserDetail user: ", user)
 
     function lowBudgetDateConverter(date) {
         let newDate = String(new Date(date))
@@ -29,14 +23,9 @@ export const UserDetail = () => {
 
     useEffect(() => {
         dispatch(thunkGetUserPosts(userId))
-        // dispatch(thunkGetUser(userId))
     }, [dispatch, userPosts.length, userId])
 
-    console.log("before userPosts: ", userPosts)
-
     if (!userPosts) return null
-    // if (!user) return null
-    console.log("after userPosts: ", userPosts)
 
     return (
         <div className="user-detail-container">

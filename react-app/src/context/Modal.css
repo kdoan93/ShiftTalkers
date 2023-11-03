@@ -15,7 +15,6 @@
   right: 0;
   left: 0;
   bottom: 0;
-  /* overflow-y: scroll; */
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -24,14 +23,4 @@
   background-color: snow;
   border: 3px solid black;
   border-radius: 5px;
-  /* position: fixed;
-  top: 10%;
-  right: 0;
-  left: 25%;
-  bottom: 0;
-  width: 50%;
-  max-height: 500px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 10px; */
 }

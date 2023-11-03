@@ -3,7 +3,6 @@
 }
 
 .post-modal-form {
-    /* border: 1px solid red; */
     margin: 20px;
 }
 
@@ -15,7 +14,6 @@
 }
 
 .post-modal-textarea {
-    /* border: 1px solid red; */
     background-color: transparent;
     width: 98%;
     padding: 5px;
@@ -23,7 +21,6 @@
 }
 
 .post-modal-button {
-    /* border: 1px solid red; */
     background-color: black;
     color: white;
     width: 100%;

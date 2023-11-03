@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./LandingPage.css"
 import { thunkGetPosts } from "../../store/post";
 import { PostDetail } from "../Post";
+import "./LandingPage.css"
 
 export const LandingPage = () => {
   const dispatch = useDispatch();

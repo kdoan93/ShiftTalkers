@@ -22,7 +22,6 @@ function SignupFormModal() {
 		if (password === confirmPassword && !Object.values(errors).length) {
 			const data = await dispatch(signUp(username, email, first_name, last_name, profile_pic, password));
 			if (data) {
-				console.log("SignupFormModal data: ", data)
 				setErrors(data)
 
 			} else closeModal()
@@ -56,17 +55,14 @@ function SignupFormModal() {
 					type="email"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
-					// required
 				/>
 				</label>
-				{/* {errors.forEach((error) => error.includes("email") ? <div>ERROR</div> : <></>)} */}
 				<label>
 				Username
 				<input
 					type="text"
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
-					// required
 				/>
 				</label>
 				<label>
@@ -75,7 +71,6 @@ function SignupFormModal() {
 					type="text"
 					value={first_name}
 					onChange={(e) => setFirstName(e.target.value)}
-					// required
 				/>
 				</label>
 				<label>
@@ -84,7 +79,6 @@ function SignupFormModal() {
 					type="text"
 					value={last_name}
 					onChange={(e) => setLastName(e.target.value)}
-					// required
 				/>
 				</label>
 				<label>
@@ -93,7 +87,6 @@ function SignupFormModal() {
 					type="url"
 					value={profile_pic}
 					onChange={(e) => setProfilePic(e.target.value)}
-					// required
 				/>
 				</label>
 				<label>
@@ -102,7 +95,6 @@ function SignupFormModal() {
 					type="password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
-					// required
 				/>
 				</label>
 				<label>
@@ -111,7 +103,6 @@ function SignupFormModal() {
 					type="password"
 					value={confirmPassword}
 					onChange={(e) => setConfirmPassword(e.target.value)}
-					// required
 				/>
 				</label>
 				<button className="signup-button" type="submit">SEND IT!</button>
