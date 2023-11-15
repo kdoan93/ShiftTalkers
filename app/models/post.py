@@ -14,7 +14,7 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Relationships
+
     user = db.relationship("User", back_populates = "posts")
     likes = db.relationship("Like", back_populates= "post", cascade="all, delete-orphan")
     comment = db.relationship("Comment", back_populates = "post", cascade="all, delete-orphan")
@@ -30,6 +30,5 @@ class Post(db.Model):
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
             'username': self.user.username,
-            'profile_pic': self.user.profile_pic,
-            # 'like': self.likes,
+            'profile_pic': self.user.profile_pic
         }
