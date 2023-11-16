@@ -158,7 +158,6 @@ def add_like(postId):
 
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    # if not has_liked:
     if form.validate_on_submit():
         new_like = Like(
             post_id = postId,
@@ -172,8 +171,6 @@ def add_like(postId):
     else:
         print(form.errors)
         return { "errors": form.errors }, 400
-    # else:
-    #     return { "errors": "User has already liked this post!" }, 400
 
 
 @post_routes.route("/<int:postId>", methods=["PUT"])
