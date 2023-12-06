@@ -80,26 +80,12 @@
 
 .post-pics {
     border: none;
-    /* text-align: center; */
     margin-left: 10%;
     width: 80%;
     height: 100%;
     display: flex;
-    /* justify-content: center; */
     gap: 15px;
     box-shadow: 4px 4px 8px black;
-}
-
-.post-pics button img {
-    /* border: 1px solid red; */
-    width: 100%;
-    height: 100%;
-}
-
-#modal-content {
-    /* border: 1px solid red;
-    height: 100%;
-    width: 100%; */
 }
 
 .post-pics button {
@@ -108,12 +94,19 @@
     padding: 0px;
     cursor: pointer;
     height: auto;
-    width: auto;
+    width: 100%;
 }
 
-.post-pics img img {
+.post-pics button img {
+    /* border: 1px solid red; */
     width: 100%;
     height: 100%;
+}
+
+#modal-content img {
+    /* border: 1px solid green; */
+    height: 100%;
+    width: 100%;
 }
 
 .post-postComments {

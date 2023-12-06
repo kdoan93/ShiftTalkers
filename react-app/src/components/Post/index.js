@@ -117,16 +117,8 @@ export const PostDetail = ({ post }) => {
                 <OpenModalButton
                     buttonText={<img src={post.media} />}
                     modalComponent={<img src={post.media} />}
-                    // modalComponent={<img height="50%" width="50%" src={post.media} />}
                 />
-
             </div>
-            {/* <button className="post-pics"
-                onClick={openModal}
-            >
-                <img width="500px" src={post.media} />
-            </button> */}
-
             <div>
                 <PostComments post={post} />
             </div>
