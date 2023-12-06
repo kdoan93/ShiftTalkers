@@ -37,6 +37,11 @@ export const PostDetail = ({ post }) => {
         return month.concat(day)
     }
 
+    const openModal = async (e) => {
+        e.preventDefault()
+        alert("clicked")
+    }
+
     const logIn = async (e) => {
         e.preventDefault()
         alert("Please log in or sign up to like a post!")
@@ -109,8 +114,18 @@ export const PostDetail = ({ post }) => {
                 {post.body}
             </div>
             <div className="post-pics">
-                <img width="500px" src={post.media} />
+                <OpenModalButton
+                    buttonText={<img src={post.media} />}
+                    modalComponent={<img src={post.media} />}
+                    // modalComponent={<img height="50%" width="50%" src={post.media} />}
+                />
+
             </div>
+            {/* <button className="post-pics"
+                onClick={openModal}
+            >
+                <img width="500px" src={post.media} />
+            </button> */}
 
             <div>
                 <PostComments post={post} />
