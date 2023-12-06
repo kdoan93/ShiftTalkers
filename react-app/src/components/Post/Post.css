@@ -1,7 +1,14 @@
 .post-details-container {
     border: 2px solid black;
     margin: 20px 10px;
+    /* width: 60%; */
+    /* padding: 15px; */
+    /* margin-top: 100px; */
 }
+
+/* .post-details-container div {
+    margin: 10px;
+} */
 
 .post-profile-pic {
     border: 1px solid black;
@@ -11,12 +18,14 @@
 }
 
 .post-user-date p {
+    /* border: 1px solid red; */
     margin: 5px;
     display: flex;
     align-items: center;
 }
 
 .post-username {
+    /* border: 1px solid red; */
     font-size: 24px;
     font-weight: 700;
 }
@@ -29,6 +38,7 @@
 }
 
 .post-user-buttons button {
+    /* border: 1px solid red; */
     border: transparent;
     color: gray;
     background-color: transparent;
@@ -47,18 +57,21 @@
 }
 
 .post-upper-details {
+    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     margin: 20px;
 }
 
 .post-user-details {
+    /* border: 1px solid white; */
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .post-body {
+    /* border: 1px solid blue; */
     margin: 20px 0px;
     margin-left: 10%;
     width: 80%;
@@ -75,7 +88,16 @@
     box-shadow: 4px 4px 8px black;
 }
 
-.post-pics img {
+.post-pics button {
+    border: none;
+    background-color: snow;
+    padding: 0px;
+    cursor: pointer;
+    height: auto;
+    width: 100%;
+}
+
+.post-pics button img {
     /* border: 1px solid red; */
     width: 100%;
     height: 100%;
@@ -88,10 +110,12 @@
 }
 
 .post-postComments {
+    /* border: 1px solid red; */
     margin: 20px;
 }
 
 .post-comment-input form {
+    /* border: 1px solid red; */
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -124,6 +148,7 @@
 }
 
 .post-comment-bottom {
+    /* border: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
@@ -131,6 +156,7 @@
 }
 
 .post-comment-bottom button {
+    /* border: 1px solid red; */
     width: 150px;
 }
 
