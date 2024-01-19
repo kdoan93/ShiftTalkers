@@ -6,6 +6,7 @@ from ..forms.like_form import LikeForm
 from datetime import date
 from ..models.db import db
 from flask_login import current_user, login_required
+from app.api.aws_helper_routes import (upload_file_to_s3, get_unique_filename)
 
 
 post_routes = Blueprint('post', __name__)
@@ -103,6 +104,7 @@ def create_post():
         new_post = Post(
             user_id = current_user.id,
             media = form.data["media"],
+            # media.filename = get_unique_filename(media.filename),
             body = form.data["body"],
             created_at = date.today(),
             updated_at = date.today()
@@ -114,6 +116,35 @@ def create_post():
     else:
         print(form.errors)
         return { "errors": form.errors }, 400
+
+
+# @post_routes.route('/', methods=["POST"])
+# @login_required
+# def create_post():
+#     """
+#     Route to create a post
+#     """
+
+#     form = PostForm()
+
+#     form["csrf_token"].data = request.cookies["csrf_token"]
+
+#     if form.validate_on_submit():
+
+#         new_post = Post(
+#             user_id = current_user.id,
+#             media = form.data["media"],
+#             body = form.data["body"],
+#             created_at = date.today(),
+#             updated_at = date.today()
+#         )
+#         db.session.add(new_post)
+#         db.session.commit()
+#         return new_post.to_dict(), 201
+
+#     else:
+#         print(form.errors)
+#         return { "errors": form.errors }, 400
 
 
 @post_routes.route('/<int:postId>/comments', methods=["POST"])
