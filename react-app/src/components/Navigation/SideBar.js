@@ -106,6 +106,12 @@ function SideBar(){
                         LinkedIn
                     </a>
                 </div>
+                <div>
+                    <a href="https://kdoan93.github.io/">
+                        <i class="fa-regular fa-folder-open fa-2xl gap"></i>
+                        Portfolio
+                    </a>
+                </div>
             </div>
 		</div>
 	);
