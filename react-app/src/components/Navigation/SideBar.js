@@ -26,7 +26,8 @@ function SideBar(){
 	return (
 		<div className='sideBar'>
             <div className='upper-sideBar'>
-                <div className='sidebar-navlink'>
+                {/* <div className='sidebar-navlink'> */}
+                <div className='sideBar-home sideBar-font'>
                     <NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }}>
                         <i class="fa-solid fa-house"></i>
                         <span className='text'>
@@ -35,20 +36,22 @@ function SideBar(){
                     </NavLink>
                 </div>
                 {sessionUser ? (
-                    <div className='user-sidebar'>
-                        <div className='sidebar-navlink'>
+                    <div className='user-sideBar'>
+                        {/* <div className='sidebar-navlink'> */}
+                        <div className='sideBar-profilePage sideBar-font'>
                             <div>
                                 <NavLink
                                     exact to={`/users/current`}
                                     style={{ textDecoration: 'none', color: "black" }}>
                                         <i class="fa-solid fa-warehouse"></i>
                                         <span className='text'>
-                                            Profile Page
+                                            Profile
                                         </span>
                                 </NavLink>
                             </div>
                         </div>
-                        <div className='sidebar-navlink'>
+                        {/* <div className='sidebar-navlink'> */}
+                        <div className='sideBar-logOut'>
                             <p className='sidebar-logout sidebar-links' onClick={handleLogout}>
                                 <i class="fa-solid fa-right-from-bracket"></i>
                                 <span className='text'>
@@ -94,22 +97,24 @@ function SideBar(){
                 )}
             </div>
             <div className='about-links-container'>
-                <div>
+                <div className='link'>
+                    {/* <a class="fa-brands fa-square-github fa-2xl gap" href='https://github.com/kdoan93/ShiftTalkers'> */}
                     <a href='https://github.com/kdoan93/ShiftTalkers'>
                         <i class="fa-brands fa-square-github fa-2xl gap"/>
-                        GitHub
+                        {/* <i class=""/> */}
+                        {/* GitHub */}
                     </a>
                 </div>
-                <div>
+                <div className='link'>
                     <a href="https://www.linkedin.com/in/kdoan93/">
                         <i class="fa-brands fa-linkedin fa-2xl gap"/>
-                        LinkedIn
+                        {/* LinkedIn */}
                     </a>
                 </div>
-                <div>
+                <div className='link'>
                     <a href="https://kdoan93.github.io/">
                         <i class="fa-regular fa-folder-open fa-2xl gap"></i>
-                        Portfolio
+                        {/* Portfolio */}
                     </a>
                 </div>
             </div>

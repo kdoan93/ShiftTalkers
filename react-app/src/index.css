@@ -71,3 +71,15 @@ body {
     }
 
 }
+
+@media screen and (max-device-width: 700px) {
+    .landing-page-container {
+        /* border: 1px solid green; */
+        margin-top: 150px;
+    }
+
+    .post-landing-page-container {
+        /* border: 1px solid red; */
+        margin: 0px 0px 0px 10%;
+    }
+}
