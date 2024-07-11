@@ -119,7 +119,7 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        background-color: white;
+        background-color: snow;
         padding: 0;
     }
 
